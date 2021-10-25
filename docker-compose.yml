@@ -1,3 +1,5 @@
+
+version: '3'
 services:
   db:
     environment:
@@ -14,4 +16,3 @@ services:
       - "3000:3000"
     volumes:
       - .:/app:delegated
-version: '3'

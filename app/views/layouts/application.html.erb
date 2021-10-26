@@ -17,9 +17,14 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+
+
+
 <body>
-<%= render 'home/navbar' %>
-<div class="container"
+<%= render 'home/navbarN' %>
+<div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 <%= yield %>
 </div>
 <%= render 'home/footer' %>

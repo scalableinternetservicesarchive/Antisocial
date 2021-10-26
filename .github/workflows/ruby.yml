@@ -1,0 +1,39 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        env:
+          POSTGRES_PASSWORD: postgres
+        image: postgres
+        ports:
+          - 5432:5432
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install PostgreSQL client
+      run: sudo apt-get -yqq install libpq-dev
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.2
+        bundler-cache: true
+    - name: Set up yarn
+      run: |
+        yarn install --pure-lockfile
+    - name: Prepare database
+      env:
+        PGHOST: localhost
+        RAILS_ENV: test
+      run: bin/rails db:setup
+    - name: Run tests
+      env:
+        PGHOST: localhost
+      run: bin/rails test

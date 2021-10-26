@@ -10,6 +10,34 @@ docker-compose run web bundle install
 docker-compose run web yarn install
 ```
 
+### Create the development and test databases
+
+First start up the database container:
+
+```sh
+docker-compose up --detach db
+```
+
+Then verify that the container is running:
+
+```sh
+docker-compose ps
+```
+
+The output should look like:
+
+```txt
+      Name                    Command              State    Ports
+-------------------------------------------------------------------
+projectname_db_1   docker-entrypoint.sh postgres   Up      5432/tcp
+```
+
+Run the following to create the database:
+
+```sh
+docker-compose run web rails db:create
+```
+
 Start up the containers:
 
 ```sh

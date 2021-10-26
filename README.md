@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Ensure dependencies are up-to-date
 
-Things you may want to cover:
+Periodically run the following two commands to ensure your ruby and node
+dependencies are up to date:
 
-* Ruby version
+```sh
+docker-compose run web bundle install
+docker-compose run web yarn install
+```
 
-* System dependencies
+Start up the containers:
 
-* Configuration
+```sh
+docker-compose up
+```
 
-* Database creation
+Then verify that the containers are running:
 
-* Database initialization
+```sh
+docker-compose ps
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app should be running at `http://localhost:3000/`

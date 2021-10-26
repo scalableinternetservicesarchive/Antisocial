@@ -37,7 +37,12 @@ jobs:
       env:
         PGHOST: localhost
         RAILS_ENV: test
-      run: bin/rails db:setup
+      run: bin/rails db:migrate
+    - name: Prepare database 3
+      env:
+        PGHOST: localhost
+        RAILS_ENV: test
+      run: bin/rails db:seed
     - name: Run tests
       env:
         PGHOST: localhost

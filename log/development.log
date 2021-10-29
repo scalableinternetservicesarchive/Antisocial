@@ -5158,3 +5158,110 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 330ms (Views: 306.9ms | ActiveRecord: 0.0ms | Allocations: 9222)
 
 
+Started GET "/" for 172.18.0.1 at 2021-10-29 03:41:35 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.5ms | Allocations: 320)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_navbarN.html.erb (Duration: 7.2ms | Allocations: 407)
+  Rendered home/_footer.html.erb (Duration: 2.7ms | Allocations: 110)
+  Rendered layout layouts/application.html.erb (Duration: 240.9ms | Allocations: 6918)
+Completed 200 OK in 370ms (Views: 299.8ms | ActiveRecord: 0.0ms | Allocations: 10212)
+
+
+Started GET "/" for 172.18.0.1 at 2021-10-29 03:50:23 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (9.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 214)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_navbarN.html.erb (Duration: 5.6ms | Allocations: 407)
+  Rendered home/_footer.html.erb (Duration: 3.7ms | Allocations: 110)
+  Rendered layout layouts/application.html.erb (Duration: 936.3ms | Allocations: 16701)
+Completed 200 OK in 974ms (Views: 954.9ms | ActiveRecord: 0.0ms | Allocations: 19109)
+
+
+Started GET "/users/sign_in" for 172.18.0.1 at 2021-10-29 03:50:27 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.8ms | Allocations: 604)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 259.6ms | Allocations: 7089)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_navbarN.html.erb (Duration: 0.8ms | Allocations: 127)
+  Rendered home/_footer.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 354.9ms | Allocations: 10854)
+Completed 200 OK in 432ms (Views: 363.3ms | ActiveRecord: 25.3ms | Allocations: 18056)
+
+
+Started GET "/users/sign_up" for 172.18.0.1 at 2021-10-29 03:50:30 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 4.1ms | Allocations: 216)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 136)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 17.3ms | Allocations: 2069)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_navbarN.html.erb (Duration: 0.5ms | Allocations: 127)
+  Rendered home/_footer.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 74.7ms | Allocations: 5812)
+Completed 200 OK in 86ms (Views: 84.0ms | ActiveRecord: 0.0ms | Allocations: 6993)
+
+
+Started POST "/users" for 172.18.0.1 at 2021-10-29 03:50:41 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nickname"=>"31212312312", "email"=>"eljon@ucsb.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :nickname[0m
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (22.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eljon@ucsb.edu"], ["LIMIT", 1]]
+  [1m[36mUser Create (19.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "eljon@ucsb.edu"], ["encrypted_password", "$2a$12$aPcUkvXlPxJsueWFw/d0SOrfLhKRKzrla/gD5Sivpnd6AqYWVnzUC"], ["created_at", "2021-10-29 03:50:42.060261"], ["updated_at", "2021-10-29 03:50:42.060261"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 458ms (ActiveRecord: 49.9ms | Allocations: 9427)
+
+
+Started GET "/" for 172.18.0.1 at 2021-10-29 03:50:42 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 33)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/_navbarN.html.erb:8
+  Rendered home/_navbarN.html.erb (Duration: 10.3ms | Allocations: 1557)
+  Rendered home/_footer.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 62.1ms | Allocations: 5191)
+Completed 200 OK in 67ms (Views: 63.7ms | ActiveRecord: 2.5ms | Allocations: 5583)
+
+
+Started DELETE "/users/sign_out" for 172.18.0.1 at 2021-10-29 03:50:43 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 56ms (ActiveRecord: 1.4ms | Allocations: 4468)
+
+
+Started GET "/" for 172.18.0.1 at 2021-10-29 03:50:43 +0000
+Cannot render console from 172.18.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 33)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/_navbarN.html.erb (Duration: 1.0ms | Allocations: 157)
+  Rendered home/_footer.html.erb (Duration: 0.5ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 80.7ms | Allocations: 3791)
+Completed 200 OK in 85ms (Views: 83.7ms | ActiveRecord: 0.0ms | Allocations: 4176)
+
+

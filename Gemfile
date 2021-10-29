@@ -61,6 +61,6 @@ gem 'devise', '>= 4.8.0'
 # The latest versions of the sassc gem don’t provide pre-compiled native versions necessitating each deployment to
 # manually compile its native extension which is rather time consuming.
 # However, we can leverage an old version of sassc to take advantage of its available pre-compiled native gems.
-
+gem 'sassc', '~> 2.1.0'
 
 

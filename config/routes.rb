@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
-  get 'users/index'
+
+
+
+  devise_for :users, :path_prefix => 'd'
+  resources :users, :only =>[:show]
+
+  root 'home#index'
+  # get 'home/index'
+  # get 'users/index'
+
+  match '/users',   to: 'users#index',   via: 'get'
+  match '/users/profile',     to: 'users#show',       via: 'get'
+
+
+  # Resources
   resources :posts do
     resources :comments
   end
-  devise_for :users
-  root 'home#index'
-  get 'home/index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

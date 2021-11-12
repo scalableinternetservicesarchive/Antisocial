@@ -29,24 +29,44 @@
 
 
 User.delete_all
+Comment.delete_all
 Post.delete_all
-
+Friendship.delete_all
 
 
 
 # Create users
 #
+puts "Starting users generation..."
 users = []
 for i in 0..100 do
-  User.create! :nickname => 'user_'+i.to_s, :email => 'user_'+i.to_s+'@gmail.com', :password => 'User____' +i.to_s, :password_confirmation => 'User____' +i.to_s
+  u = (User.create! :nickname => 'user_'+i.to_s, :email => 'user_'+i.to_s+'@gmail.com', :password => 'Password1234', :password_confirmation => 'Password1234')
+  users << u
 end
-
-
-# Create posts and relative comments
-for i in 0..50 do
+puts "Users generation completed!"
+puts
+#Create posts and relative comments
+puts "Starting post and comments generation..."
+for i in 0..100 do
   p = Post.create! :title => 'Some Title '+i.to_s, :text => 'Some Text D'+i.to_s
-  for j in 0..3 do
+  for j in 0..5 do
     c = Comment.create! :body => "Some comment for post "+i.to_s+", comment number "+j.to_s, :post => p
   end
 end
+puts "Posts and comments generation completed!"
+puts
 
+# Generate friendships
+#
+puts "Starting followship generation..."
+for i in 0..1000
+  users_len = users.length()
+  from = rand(0..users_len-1)
+  to = rand(0..users_len-1)
+  while from.eql? to
+    to = rand(0..users_len-1)
+  end
+  Friendship.create! :user_id => users[from].id, :friend_id => users[to].id, :friend => users[to]
+end
+puts "Followship generation completed!"
+puts

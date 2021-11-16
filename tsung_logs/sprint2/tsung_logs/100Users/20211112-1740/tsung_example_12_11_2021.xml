@@ -1,0 +1,52 @@
+<?xml version="1.0"?><tsung loglevel="notice">
+  <clients>
+    <client host="localhost" maxusers="100" use_controller_vm="true"/>
+  </clients>
+
+  <servers>
+    <server host="avani.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"/>
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="5" unit="second">
+      <users arrivalrate="1" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="5" unit="second">
+      <users arrivalrate="2" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="5" unit="second">
+      <users arrivalrate="4" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="5" unit="second">
+      <users arrivalrate="8" unit="second"/>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <option name="global_ack_timeout" value="2000"/>
+  </options>
+
+  <sessions>
+    <session name="CreateNewPost" type="ts_http" weight="1">
+<request><http method="GET" url="/"/></request>
+
+      <request><http method="GET" url="/posts/"/></request>
+
+      <request>
+        <dyn_variable name="authenticity_token"/>
+        <http url="/posts/new" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <if var="authenticity_token" neq="">
+        <request subst="true">
+          <http url="/posts/" method="POST" version="1.1" content_type="application/x-www-form-urlencoded" contents="authenticity_token=%%_authenticity_token%%&amp;post%5Btitle%5D=AAAaaaaaa&amp;post%5Btext%5D=BBBBaaaa&amp;commit=Create+Post"/>
+        </request>
+      </if>
+
+      <request><http method="GET" url="/posts/"/></request>
+
+    </session>
+  </sessions>
+</tsung>

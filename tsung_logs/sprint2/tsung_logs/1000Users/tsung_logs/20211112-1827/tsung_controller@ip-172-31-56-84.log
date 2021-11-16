@@ -1,0 +1,85 @@
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(5:<0.127.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20211112-1827"
+ 
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+              ts_mon:(5:<0.110.0>) starting monitor, global 
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+           ts_config:(5:<0.127.0>) Reading config file: tsung_example_12_11_2021.xml
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+           ts_config:(5:<0.127.0>) Session name for id 1 is "CreateNewPost"
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Tsung version: 1.7.0
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Erlang version: Erlang/OTP 22 [erts-10.6] [source] [64-bit] [smp:2:2] [ds:2:2:10] [async-threads:8] [hipe]
+
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:System architecture x86_64-redhat-linux-gnu
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Current path: /usr/lib/tsung/tsung-1.7.0/ebin/tsung.beam
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+              ts_mon:(5:<0.128.0>) Activate clients with text backend
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+              ts_mon:(5:<0.128.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(5:<0.127.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+         ts_launcher:(5:<0.182.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+  ts_launcher_static:(5:<0.181.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 1 for client "localhost" (last ? true): will start 20 users
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 2 for client "localhost" (last ? true): will start 40 users
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 3 for client "localhost" (last ? true): will start 80 users
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 4 for client "localhost" (last ? true): will start 160 users
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+         ts_launcher:(5:<0.182.0>) Expected duration of first phase: 10.0 sec (20 users) 
+
+=INFO REPORT==== 12-Nov-2021::18:27:37 ===
+         ts_launcher:(5:<0.182.0>) Activate launcher (20 users) in 2823 msec 
+
+=INFO REPORT==== 12-Nov-2021::18:27:49 ===
+         ts_launcher:(5:<0.182.0>) Phase duration exceeded, but not all users were launched (7 users, 35.0% of phase)
+
+=INFO REPORT==== 12-Nov-2021::18:27:49 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (40 users, 0.004); expected duration=10.0 sec
+
+=INFO REPORT==== 12-Nov-2021::18:27:57 ===
+         ts_launcher:(4:<0.182.0>) Need to wait 1.347 sec before changing phase, going to sleep
+
+=INFO REPORT==== 12-Nov-2021::18:27:59 ===
+         ts_launcher:(5:<0.182.0>) Waking up
+
+=INFO REPORT==== 12-Nov-2021::18:27:59 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (80 users, 0.008); expected duration=10.0 sec
+
+=INFO REPORT==== 12-Nov-2021::18:28:09 ===
+         ts_launcher:(5:<0.182.0>) Phase duration exceeded, but not all users were launched (8 users, 10.0% of phase)
+
+=INFO REPORT==== 12-Nov-2021::18:28:09 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (160 users, 0.016); expected duration=10.0 sec
+
+=INFO REPORT==== 12-Nov-2021::18:28:18 ===
+         ts_launcher:(5:<0.182.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 12-Nov-2021::18:28:33 ===
+     ts_launcher_mgr:(5:<0.175.0>) No more active users 'tsung_controller@ip-172-31-56-84' "2528"

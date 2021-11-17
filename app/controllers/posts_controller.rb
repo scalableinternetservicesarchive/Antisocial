@@ -3,7 +3,10 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    #ids = current_user.friends.pluck(:id) << current_user.id
+    ids = current_user.friends.map{|f| f.id} << current_user.id
+    @posts = Post.where(user_id: ids)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -25,6 +28,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+
         format.html { redirect_to @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -56,6 +60,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -64,7 +69,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params[:user_id] = current_user.id
-      params.require(:post).permit(:title, :text)
+      params.require(:post).permit(:title, :text, :user_id)
     end
 end

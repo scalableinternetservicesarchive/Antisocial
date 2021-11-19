@@ -12,4 +12,9 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def comments
+    @user = User.find(params[:id])
+    @comments = @user.comments
+  end
+
 end

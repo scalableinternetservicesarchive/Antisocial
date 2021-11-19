@@ -62,3 +62,5 @@ gem 'devise', '>= 4.8.0'
 # manually compile its native extension which is rather time consuming.
 # However, we can leverage an old version of sassc to take advantage of its available pre-compiled native gems.
 gem 'sassc', '~> 2.1.0'
+
+gem 'rake', '~> 13.0.1'

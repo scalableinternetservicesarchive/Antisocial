@@ -60,16 +60,20 @@
 
         <request>
             <dyn_variable name="authenticity_token" ></dyn_variable>
-            <http url='/' version='1.1' method='GET'></http>
+            <http url='/users/profile' version='1.1' method='GET'></http>
          </request>
 
         <!--LOGOUT-->
+        <if var="authenticity_token" neq="">
         <request subst="true">
-            <http url="/d/users/sign_out/" version='1.1' method="DELETE"
+            <http url='/d/users/sign_out'
+            version='1.1'
+            method='POST'
             content_type="application/x-www-form-urlencoded"
             contents='_method=delete&amp;authenticity_token=%%_authenticity_token%%'>
             </http>
         </request>
+        </if>
         
     </session>
     

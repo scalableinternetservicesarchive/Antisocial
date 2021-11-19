@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :text
       t.timestamps
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: {on_delete: :cascade}
     end
   end
 end

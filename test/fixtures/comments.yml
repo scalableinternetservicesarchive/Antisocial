@@ -3,7 +3,11 @@
 one:
   body: MyText
   post: one
+  user_id: 1
+  post_id: 1
 
 two:
   body: MyText
   post: two
+  user_id: 1
+  post_id: 1

@@ -48,13 +48,20 @@ puts
 #Create posts and relative comments
 puts "Starting post and comments generation..."
 for i in 0..100 do
-  p = Post.create! :title => 'Some Title '+i.to_s, :text => 'Some Text D'+i.to_s
+  users_len = users.length()
+  from = rand(0..users_len-1)
+  p = Post.create! :title => 'Some Title '+i.to_s, :text => 'Some Text D'+i.to_s, :user_id => users[from].id
   for j in 0..5 do
-    c = Comment.create! :body => "Some comment for post "+i.to_s+", comment number "+j.to_s, :post => p
+    users_len = users.length()
+    from = rand(0..users_len-1)
+    c = Comment.create! :body => "Some comment for post "+i.to_s+", comment number "+j.to_s, :post => p, :user_id => users[from].id
   end
 end
 puts "Posts and comments generation completed!"
 puts
+
+#Comment.create! :user_id => users[from].id
+#Post.create! :user_id => users[from].id
 
 # Generate friendships
 #

@@ -4,7 +4,7 @@
 <h2>Friends</h2>
 <div class="">
   <% @user.friendships.each do |friendship| %>
-    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50" ">
+    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
     <div class="card-header">
       <%=h friendship.friend.email %>
     </div>

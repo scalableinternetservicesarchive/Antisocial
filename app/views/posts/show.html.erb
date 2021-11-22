@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
+<div class="">
+  <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50" ">
+  <div class="card-header">
+    <%= @post.title %>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= @post.text %></p>
+  </div>
+</div>
+
+
+<!--<p>-->
+<!--  <strong>Title:</strong>-->
+  <%#= @post.title %>
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Text:</strong>-->
+  <%#= @post.text %>
+<!--</p>-->
 
 <h2>Comments</h2>
 <%= render @post.comments %>

@@ -2,13 +2,16 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <h1>This show the personal profile of the current user</h1>
 <h2>Friends</h2>
-<ul>
+<div class="">
   <% @user.friendships.each do |friendship| %>
-    <li>
+    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50" ">
+    <div class="card-header">
       <%=h friendship.friend.email %>
-      - <%= link_to "remove", friendship, :method => :delete %>
-    </li>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> <%= link_to "remove", friendship, :method => :delete %></h5>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <p><%= link_to "Find New Friends", users_path %></p>

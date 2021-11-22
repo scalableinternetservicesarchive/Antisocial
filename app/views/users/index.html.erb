@@ -3,9 +3,29 @@
 <p>Find me in app/views/users/index.html.erb</p>
 
 <!--TODO: make sure a a user cannot add two times a friend-->
-<% @users.each do |user| %>
-  <% if user.email != current_user.email  %>
-  <%=h user.email %>
-  <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-  <% end %>
-<% end %>
+<div class="">
+    <% @users.each do |user| %>
+      <% if user.email != current_user.email  %>
+    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
+      <div class="card-header">
+          <%=h user.email %>
+      </div>
+      <div class="card-body">
+      <h5 class="card-title"> <%=h user.nickname %></h5>
+        <p class="card-text">Some user quote.</p>
+          <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+    </div>
+    </div>
+      <% end %>
+    <% end %>
+</div>
+
+
+
+<!--<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">-->
+<!--  <div class="card-header">Header</div>-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">Dark card title</h5>-->
+<!--    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+<!--  </div>-->
+<!--</div>-->

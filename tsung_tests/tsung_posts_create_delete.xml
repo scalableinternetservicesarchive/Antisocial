@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+  <clients>
+    <client host="localhost" maxusers="100" use_controller_vm="true" />
+  </clients>
+
+  <servers>
+    <server host="avani-test.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="5" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="5" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="5" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="5" unit="second">
+      <users arrivalrate="8" unit="second"></users>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+  </options>
+
+  <sessions>
+    <session name="CreateNewPost" type="ts_http" weight="1">
+<!--      1) User reaches homepage-->
+<!--      2) User looks at all posts-->
+<!--      3) User create a new post-->
+<!--      4) User goes back to list of posts-->
+
+<!--      <request>-->
+<!--        <http url="/posts" method="POST" version="1.1"-->
+<!--              content_type="application/x-www-form-urlencoded"-->
+<!--              contents="post%5Btitle%5D=bla&amp;post%5Btext%5D=blabla&amp;commit=Create+Post"/>-->
+<!--      </request>-->
+
+<!--      1) User reaches homepage-->
+      <!-- <request><http method="GET" url="/"></http></request> -->
+
+      <!--      2) User looks at all posts-->
+      <request><http method="GET" url="/posts/"></http></request>
+
+
+      <!--      3) User create a new post-->
+      <request>
+        <dyn_variable name="authenticity_token" ></dyn_variable>
+        <http url="/posts/new/" version="1.1" method="GET"></http>
+      </request>
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <if var="authenticity_token" neq="">
+        <request subst="true">
+          <http url="/posts/" method="POST" version="1.1"
+                content_type="application/x-www-form-urlencoded"
+                contents="authenticity_token=%%_authenticity_token%%&amp;post%5Btitle%5D=AAAaaaaaa&amp;post%5Btext%5D=BBBBaaaa&amp;commit=Create+Post"/>
+        </request>
+      </if>
+
+      <!--      4) User goes back to list of posts-->
+      <!-- <request><http method="GET" url="/posts/"></http></request> -->
+
+      <!--Delete posts -->
+        <request>
+            <dyn_variable name="posts_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+            <dyn_variable name="delete_post_url" xpath="/html/body//div[@class='container']//table/tbody/tr[1]/td[3]/a/@href"></dyn_variable> 
+            <http url="/posts/" version="1.1" method="GET"></http>
+        </request>
+
+        <if var="posts_authenticity_token" neq="">
+            <request subst="true">
+            <http url="/%%_delete_post_url%%/" method="POST" version="1.1"
+                    content_type="application/x-www-form-urlencoded"
+                    contents="_method=delete&amp;authenticity_token=%%_posts_authenticity_token%%"/>
+            </request>
+        </if>
+
+    </session>
+  </sessions>
+</tsung>

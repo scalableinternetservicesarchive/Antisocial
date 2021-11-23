@@ -11,8 +11,10 @@
         <h5 class="card-title"> <%= post.title %></h5>
         <p class="card-text">post.text</p>
         <p><%= link_to 'Show', post %></p>
-        <p><%= link_to 'Edit', edit_post_path(post) %></p>
-        <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <% if current_user.id == post.user_id %>
+          <p><%= link_to 'Edit', edit_post_path(post) %></p>
+          <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <%end %>
       </div>
 <% end %>
 </div>

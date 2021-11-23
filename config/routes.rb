@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :profiles
   devise_for :users, :path_prefix => 'd'
   resources :users, :only =>[:show]
 

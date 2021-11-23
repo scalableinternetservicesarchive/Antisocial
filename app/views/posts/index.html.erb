@@ -4,18 +4,17 @@
 
 
 <% @posts.each do |post| %>
-<div class="">
-    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
-    <div class="card-header"> <%= post.user_id %></div>
+    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-75">
+    <div class="card-header"> Post by user: <%= post.user_id %></div>
       <div class="card-body">
-        <h5 class="card-title"> <%= post.title %></h5>
+        <h5 class="card-title"> Title: <%= post.title %></h5>
         <p class="card-text">post.text</p>
-        <p><%= link_to 'Show', post %></p>
-        <p><%= link_to 'Edit', edit_post_path(post) %></p>
-        <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p><%= link_to 'Show', post %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       </div>
+    </div>
 <% end %>
-</div>
 
 
 <%= link_to 'New Post', new_post_path %>

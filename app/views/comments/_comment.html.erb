@@ -1,8 +1,8 @@
-<p>
+<div>
   <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-
+  <div id="user_id"> By: <%= comment.user_id %></div>
+  <div> <%= comment.body %></div>
+</div>
 <p>
 
   <% if current_user.id == comment.user_id %>

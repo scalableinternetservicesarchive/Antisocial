@@ -12,6 +12,7 @@
       </div>
       <div class="card-body">
       <h5 class="card-title"> <%=h user.nickname %></h5>
+        <div id='user_id' class="card-title d-none"> <%=h user.id %></div>
         <p class="card-text">Some user quote.</p>
           <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
     </div>

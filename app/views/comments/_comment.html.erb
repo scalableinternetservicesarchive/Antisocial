@@ -1,10 +1,10 @@
 <p>
+  <%comment.user_id %>
   <strong>Comment:</strong>
   <%= comment.body %>
 </p>
 
 <p>
-
   <% if current_user.id == comment.user_id %>
     <%= link_to 'Destroy Comment', [comment.post, comment],
                 method: :delete,

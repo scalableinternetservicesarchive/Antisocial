@@ -1,7 +1,8 @@
 <div>
 
   <strong>Comment:</strong>
-  <div id="user_id"> By: <%= comment.user_id %></div>
+  <div > By: <%= comment.user.nickname %></div>
+  <div id="user_id" class="d-none"> <%= comment.user.id %></div>
   <div> <%= comment.body %></div>
 </div>
 <p>

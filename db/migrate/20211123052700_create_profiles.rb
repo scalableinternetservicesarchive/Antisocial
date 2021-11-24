@@ -5,7 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :gender
       t.string :address
-      t.references :user, null: false, foreign_key: {on_delete: :cascade}
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

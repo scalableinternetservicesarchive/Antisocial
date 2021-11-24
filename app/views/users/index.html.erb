@@ -14,7 +14,9 @@
       <h5 class="card-title"> <%=h user.nickname %></h5>
         <p class="card-text">Some user quote.</p>
           <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+          <%=link_to "Profile", %>
     </div>
+
     </div>
       <% end %>
     <% end %>

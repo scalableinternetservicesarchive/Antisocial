@@ -17,4 +17,9 @@ class UsersController < ApplicationController
     @comments = @user.comments
   end
 
+  def profiles
+    @user = User.find(params[:id])
+    @profile = @user.comments
+  end
+
 end

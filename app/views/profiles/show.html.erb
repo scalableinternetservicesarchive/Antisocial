@@ -10,6 +10,7 @@
   <%= @profile.last_name %>
 </p>
 
+
 <p>
   <strong>Gender:</strong>
   <%= @profile.gender %>
@@ -20,10 +21,6 @@
   <%= @profile.address %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user_id %>
-</p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

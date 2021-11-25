@@ -6,14 +6,14 @@
   </clients>
 
   <servers>
-    <server host="avani.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="localhost" port="3000" type="tcp"></server>
   </servers>
 
   <load>
     <arrivalphase phase="1" duration="5" unit="second">
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="2" duration="5" unit="second">
+<!--     <arrivalphase phase="2" duration="5" unit="second">
       <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="5" unit="second">
@@ -21,7 +21,7 @@
     </arrivalphase>
     <arrivalphase phase="4" duration="5" unit="second">
       <users arrivalrate="8" unit="second"></users>
-    </arrivalphase>
+    </arrivalphase> -->
   </load>
 
   <options>
@@ -62,6 +62,9 @@
     <request><http method="GET" url="/posts/"></http></request>
 
 
+
+
+
     <!--      3) User create a new post-->
     <request>
         <dyn_variable name="newpost_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
@@ -79,19 +82,30 @@
     </if>
 
       <!--      4) User goes back to list of posts-->
-      <!-- <request><http method="GET" url="/posts/"></http></request> -->
+      <request><http method="GET" url="/posts/"></http></request>
 
       <!--Delete posts -->
+
+
+
     <request>
         <dyn_variable name="delete_post_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-        <dyn_variable name="delete_post_url" xpath='(/html/body//div[@class="card-body"]/p/a[@data-method="delete"]/@href)[last()]'></dyn_variable> 
-        <!-- <dyn_variable name="delete_post_url" xpath="/html/body//div[@class='container']//table/tbody/tr[1]/td[3]/a/@href"></dyn_variable>  -->
+        <dyn_variable name="delete_post_url" xpath='/html/body//div[@class="card-body"]/p/a[@data-method="delete"]/@href'></dyn_variable> 
         <http url="/posts/" version="1.1" method="GET"></http>
     </request>
 
+    <setdynvars sourcetype="eval"
+          code='fun({Pid,DynVars})->
+          {ok,Val}=ts_dynvars:lookup(delete_post_url,DynVars),
+          lists:last(Val) end.' >
+          <var name="last_item" />
+    </setdynvars>
+
+
+
     <if var="posts_authenticity_token" neq="">
         <request subst="true">
-        <http url="/%%_delete_post_url%%/" method="POST" version="1.1"
+        <http url="/%%_last_item%%/" method="POST" version="1.1"
                 content_type="application/x-www-form-urlencoded"
                 contents="_method=delete&amp;authenticity_token=%%_delete_post_authenticity_token%%"/>
         </request>

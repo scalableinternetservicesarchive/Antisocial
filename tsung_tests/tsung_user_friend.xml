@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+  <clients>
+    <client host="localhost" maxusers="1000" use_controller_vm="true" />
+  </clients>
+
+  <servers>
+    <server host="avani.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="10" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="10" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="10" unit="second">
+      <users arrivalrate="8" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="10" unit="second">
+      <users arrivalrate="16" unit="second"></users>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+  </options>
+
+  <sessions>
+
+    <session name="user friend" weight="1" type="ts_http">
+
+        <!-- LOGIN -->
+        <request>
+            <dyn_variable name="authenticity_token" ></dyn_variable>
+            <http url="/d/users/sign_in/" version='1.1' method='GET'></http>
+        </request>
+
+        <!-- wait for up to 2 seconds, user is typing names -->
+        <thinktime value="2" random="true"></thinktime>
+
+        <!-- create a random number to make a unique first name -->
+        <setdynvars sourcetype="random_number" start="1" end="100">
+            <var name="random_num" />
+        </setdynvars>
+
+        <!-- user log in -->
+        <request subst="true">
+            <http
+            url="/d/users/sign_in/"
+            version='1.1'
+            method='POST'
+            content_type="application/x-www-form-urlencoded"
+            contents='authenticity_token=%%_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in'>
+            </http>
+        </request>
+        
+    
+        <!-- once the user logs in, she can make new friends or delete friends -->
+
+        <!--get users, i.e. go to users page  -->
+        <request>
+          <dyn_variable name="users_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+          <dyn_variable name="friend_num_url" xpath="/html/body//div[@class='container']/a[2]/@href"></dyn_variable> 
+          <http url="/users/" version="1.1" method="GET"></http>
+        </request>
+      
+        <!-- <http url="/friendships?friend_id=82/" version='1.1' method="POST" -->
+        <!-- CREATE FRIEND -->
+        <request subst="true">
+            <http url="/%%_friend_num_url%%/" version='1.1' method="POST" 
+            content_type="application/x-www-form-urlencoded"
+            contents='_method=post&amp;authenticity_token=%%_users_authenticity_token%%'>
+            </http>
+        </request>
+
+
+        <!-- DELETE FRIEND -->
+
+         <!--get friends, i.e. go to users profile to see friends  -->
+        <request>
+          <dyn_variable name="users_profile_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content" ></dyn_variable>
+          <dyn_variable name="delete_friend_url" xpath="/html/body//div[@class='container']//ul/li[last()]//a/@href" ></dyn_variable>
+          <http url="/users/profile/" version="1.1" method="GET"></http>
+        </request>
+
+        <!-- delete the friend -->
+        <request subst="true">
+            <http url="/%%_delete_friend_url%%/" version='1.1' method="POST"
+            content_type="application/x-www-form-urlencoded"
+            contents='_method=delete&amp;authenticity_token=%%_users_profile_authenticity_token%%'>
+            </http>
+        </request>
+
+        <!--LOGOUT-->
+        <request>
+            <dyn_variable name="users_profile_authenticity_token_logout" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+            <http url='/users/profile' version='1.1' method='GET'></http>
+        </request>
+
+        <request subst="true">
+            <http url='/d/users/sign_out'
+            version='1.1'
+            method='POST'
+            content_type="application/x-www-form-urlencoded"
+            contents='_method=delete&amp;authenticity_token=%%_users_profile_authenticity_token_logout%%'>
+            </http>
+        </request>
+      
+
+        
+        
+    </session>
+    
+  </sessions>
+</tsung>

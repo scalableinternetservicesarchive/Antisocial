@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @page = params.fetch(:page, 0).to_i
+    @friends = current_user.friendships.offset(@page * USERS_X_PAGE).limit(USERS_X_PAGE)
   end
 
   def posts

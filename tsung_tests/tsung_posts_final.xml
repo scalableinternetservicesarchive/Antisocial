@@ -2,18 +2,18 @@
 <!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
 <tsung loglevel="notice">
   <clients>
-    <client host="localhost" maxusers="100" use_controller_vm="true" />
+    <client host="localhost" maxusers="1000" use_controller_vm="true" />
   </clients>
 
   <servers>
-    <server host="localhost" port="3000" type="tcp"></server>
+    <server host="avani.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
     <arrivalphase phase="1" duration="5" unit="second">
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
-<!--     <arrivalphase phase="2" duration="5" unit="second">
+    <arrivalphase phase="2" duration="5" unit="second">
       <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="5" unit="second">
@@ -21,7 +21,7 @@
     </arrivalphase>
     <arrivalphase phase="4" duration="5" unit="second">
       <users arrivalrate="8" unit="second"></users>
-    </arrivalphase> -->
+    </arrivalphase>
   </load>
 
   <options>
@@ -81,11 +81,7 @@
     </request>
     </if>
 
-      <!--      4) User goes back to list of posts-->
-      <request><http method="GET" url="/posts/"></http></request>
-
-      <!--Delete posts -->
-
+      <!--      4) User goes back to list of posts--> <!--Delete posts -->
 
 
     <request>
@@ -95,17 +91,17 @@
     </request>
 
     <setdynvars sourcetype="eval"
-          code='fun({Pid,DynVars})->
-          {ok,Val}=ts_dynvars:lookup(delete_post_url,DynVars),
-          lists:last(Val) end.' >
-          <var name="last_item" />
+        code='fun({Pid,DynVars})->
+        {ok,Val}=ts_dynvars:lookup(delete_post_url,DynVars),
+        lists:last(Val) end.' >
+        <var name="last_delete_post_url" />
     </setdynvars>
 
 
 
     <if var="posts_authenticity_token" neq="">
         <request subst="true">
-        <http url="/%%_last_item%%/" method="POST" version="1.1"
+        <http url="/%%_last_delete_post_url%%/" method="POST" version="1.1"
                 content_type="application/x-www-form-urlencoded"
                 contents="_method=delete&amp;authenticity_token=%%_delete_post_authenticity_token%%"/>
         </request>

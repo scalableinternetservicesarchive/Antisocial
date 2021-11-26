@@ -62,9 +62,20 @@
 
         <!-- VIEW POST -->
         <request>
-          <dyn_variable name="post_url" xpath="(/html/body//div[@class='card-body']//p/a/@href)[1]"></dyn_variable> 
+          <dyn_variable name="post_url" xpath="/html/body//div[@class='card-body']//p/a/@href"></dyn_variable> 
           <http url='/posts/' version='1.1' method='GET'></http>
         </request>
+
+        <setdynvars sourcetype="eval"
+          code='fun({Pid,DynVars})->
+          {ok,Val}=ts_dynvars:lookup(post_url,DynVars),
+          lists:last(Val) end.' >
+          <var name="last_post_url" />
+        </setdynvars>
+
+
+
+
 
         <!-- wait for up to 2 seconds -->
         <!-- <thinktime value="2" random="true"></thinktime> -->
@@ -74,9 +85,9 @@
 
         <!-- GET POST -->
         <request subst="true">
-            <dyn_variable name="comment_authenticity_token1" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+            <dyn_variable name="comment_authenticity_token_one" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
             <http
-            url='/%%_post_url%%/'
+            url='/%%_last_post_url%%/'
             version='1.1'
             method='GET'>
             </http>
@@ -84,27 +95,37 @@
 
         <!--POST COMMENT-->
         <request subst="true">
-            <http url="/%%_post_url%%/comments" version='1.1' method="POST"
+            <http url="/%%_last_post_url%%/comments" version='1.1' method="POST"
             content_type="application/x-www-form-urlencoded"
-            contents='authenticity_token=%%_comment_authenticity_token1%%&amp;comment%5Bbody%5D=%%_random_string%%&amp;commit=Create+Comment'>
+            contents='authenticity_token=%%_comment_authenticity_token_one%%&amp;comment%5Bbody%5D=%%_random_string%%&amp;commit=Create+Comment'>
             </http>
         </request>
 
+         <!-- wait for up to 2 seconds, user is typing names -->
+        <thinktime value="2" random="true"></thinktime>
+
         <request subst="true">
-            <dyn_variable name="comment_authenticity_token2" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-            <dyn_variable name="delete_comment_url" xpath="(/html/body//div[@class='container']//p/a/@href)[last()]"></dyn_variable> 
+            <dyn_variable name="comment_authenticity_token_two" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+            <dyn_variable name="delete_comment_url" xpath="/html/body//div[@class='container']//p/a/@href"></dyn_variable> 
             <http
-            url='/%%_post_url%%/'
+            url='/%%_last_post_url%%/'
             version='1.1'
             method='GET'>
             </http>
         </request>
 
+        <setdynvars sourcetype="eval"
+          code='fun({Pid,DynVars})->
+          {ok,Val}=ts_dynvars:lookup(delete_comment_url,DynVars),
+          lists:last(Val) end.' >
+          <var name="last_delete_comment_url" />
+        </setdynvars>
+
         <!--DELETE COMMENT-->
         <request subst="true">
-            <http url="/%%_delete_comment_url%%/" version='1.1' method="POST"
+            <http url="/%%_last_delete_comment_url%%/" version='1.1' method="POST"
             content_type="application/x-www-form-urlencoded"
-            contents="_method=delete&amp;authenticity_token=%%_comment_authenticity_token2%%">
+            contents="_method=delete&amp;authenticity_token=%%_comment_authenticity_token_two%%">
             </http>
         </request>
 

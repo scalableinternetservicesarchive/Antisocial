@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+
+  USERS_X_PAGE = 5
   def index
-    @users = User.all
+    # @users = User.all
+    @page = params.fetch(:page, 0).to_i
+    @users = User.offset(@page * USERS_X_PAGE).limit(USERS_X_PAGE)
   end
 
   def show

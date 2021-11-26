@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_052700) do
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "gender"
+    t.string "about"
     t.string "address"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -68,5 +68,5 @@ ActiveRecord::Schema.define(version: 2021_11_23_052700) do
   add_foreign_key "comments", "posts", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "posts", "users", on_delete: :cascade
-  add_foreign_key "profiles", "users"
+  add_foreign_key "profiles", "users", on_delete: :cascade
 end

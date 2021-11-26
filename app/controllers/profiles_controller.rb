@@ -3,21 +3,31 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    @profiles = Profile.all
+    puts "profile"
+    puts current_user.id
+    @profiles = Profile.where(user_id: current_user.id)
   end
 
   # GET /profiles/1 or /profiles/1.json
   def show
-    @profile = params[:profile_id]
+    id = params[:id]
+    @profile = Profile.find_by user_id: id
   end
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
+
+    if Profile.exists?(user_id: current_user.id)
+      redirect_to(root_path)
+    else
+      @profile = Profile.new
+    end
+
   end
 
   # GET /profiles/1/edit
   def edit
+    @profile = Profile.find_by user_id: current_user.id
   end
 
   # POST /profiles or /profiles.json
@@ -37,6 +47,7 @@ class ProfilesController < ApplicationController
 
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
+    @profile = Profile.find_by user_id: current_user.id
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: "Profile was successfully updated." }
@@ -50,11 +61,8 @@ class ProfilesController < ApplicationController
 
   # DELETE /profiles/1 or /profiles/1.json
   def destroy
-    @profile.destroy
-    respond_to do |format|
-      format.html { redirect_to profiles_url, notice: "Profile was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to(root_path)
+    #@profile = Profile.where("user_id": current_user.id)
   end
 
   private
@@ -65,6 +73,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :gender, :address)
+      params.require(:profile).permit(:first_name, :last_name, :about, :address)
     end
 end

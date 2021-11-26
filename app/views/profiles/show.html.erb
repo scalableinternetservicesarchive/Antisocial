@@ -1,27 +1,19 @@
 <p id="notice"><%= notice %></p>
-<p>HERE</p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
-
-
-<p>
-  <strong>Gender:</strong>
-  <%= @profile.gender %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @profile.address %>
-</p>
-
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<h1>Profile</h1>
+<% if current_user.id != @profile.user_id %>
+  <% if current_user.friends.include? @profile.user_id %>
+    <p><%= @profile.about%></p>
+    <p><%= @profile.first_name%></p>
+    <p><%= @profile.last_name%></p>
+    <p><%= @profile.address%></p>
+  <% else %>
+    <p><%= @profile.about %></p>
+  <% end %>
+<% else %>
+  <p><%= @profile.about%></p>
+  <p><%= @profile.first_name%></p>
+  <p><%= @profile.last_name%></p>
+  <p><%= @profile.address%></p>
+<%end%>>
 <%= link_to 'Back', profiles_path %>

@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Profile</h1>
-<p>HERE</p>
-<%@profile.id%>
 
 <% @profiles.each do |profile| %>
+  <p><%profile.id%></p>
   <%if profile.user_id == current_user.id %>
     <p>
       <strong>First name:</strong>
@@ -18,8 +17,8 @@
 
 
     <p>
-      <strong>Gender:</strong>
-      <%= profile.gender %>
+      <strong>About:</strong>
+      <%= profile.about %>
     </p>
 
     <p>
@@ -27,14 +26,11 @@
       <%= profile.address %>
     </p>
 
-    <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <p><%= link_to 'Edit', edit_profile_path(profile) %></p>
 
-    <%end %>
-  </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%end %>
+<% end %>
+  <%= link_to 'New Profile', new_profile_path %>
 
-<br>
+
 

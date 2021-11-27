@@ -3,7 +3,7 @@
 <h1>This show the personal profile of the current user</h1>
 <h2>Friends</h2>
 <div class="">
-  <% if @user.friendships %>
+  <% if @user %>
   <% @user.friendships&.each do |friendship| %>
     <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
     <div class="card-header">

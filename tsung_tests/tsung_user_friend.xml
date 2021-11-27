@@ -22,6 +22,24 @@
     <arrivalphase phase="4" duration="10" unit="second">
       <users arrivalrate="16" unit="second"></users>
     </arrivalphase>
+    <arrivalphase phase="5" duration="10" unit="second">
+      <users arrivalrate="32" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="10" unit="second">
+      <users arrivalrate="64" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="7" duration="10" unit="second">
+      <users arrivalrate="80" unit="second"></users>
+    </arrivalphase>
+    <!-- <arrivalphase phase="8" duration="10" unit="second">
+      <users arrivalrate="256" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="9" duration="10" unit="second">
+      <users arrivalrate="512" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="10" duration="10" unit="second">
+      <users arrivalrate="1024" unit="second"></users>
+    </arrivalphase> -->
   </load>
 
   <options>
@@ -36,8 +54,8 @@
         <!-- LOGIN -->
         <request>
             <dyn_variable name="authenticity_token" ></dyn_variable>
-            <http url="/d/users/sign_in/" version='1.1' method='GET'></http>
-        </request>
+            <http url='/d/users/sign_in/' version='1.1' method='GET'></http>
+         </request>
 
         <!-- wait for up to 2 seconds, user is typing names -->
         <thinktime value="2" random="true"></thinktime>
@@ -47,16 +65,22 @@
             <var name="random_num" />
         </setdynvars>
 
+        <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+          <var name="encoded_authenticity_token" />
+        </setdynvars>
+
         <!-- user log in -->
-        <request subst="true">
-            <http
-            url="/d/users/sign_in/"
-            version='1.1'
-            method='POST'
-            content_type="application/x-www-form-urlencoded"
-            contents='authenticity_token=%%_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in'>
-            </http>
-        </request>
+        <if var="encoded_authenticity_token" neq="">
+          <request subst="true">
+              <http
+              url='/d/users/sign_in/'
+              version='1.1'
+              method='POST'
+              content_type="application/x-www-form-urlencoded"
+              contents='authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in'>
+              </http>
+          </request>
+        </if>
         
     
         <!-- once the user logs in, she can make new friends or delete friends -->
@@ -68,21 +92,27 @@
           <http url="/users/" version="1.1" method="GET"></http>
         </request>
 
+        <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(users_authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+          <var name="encoded_users_authenticity_token" />
+        </setdynvars>
+
         <setdynvars sourcetype="eval"
           code='fun({Pid,DynVars})->
           {ok,Val}=ts_dynvars:lookup(friend_num_url,DynVars),
           lists:last(Val) end.'>
-        <var name="last_friend_num_url" />
+          <var name="last_friend_num_url" />
         </setdynvars>
       
         <!-- <http url="/friendships?friend_id=82/" version='1.1' method="POST" -->
         <!-- CREATE FRIEND -->
-        <request subst="true">
-            <http url="/%%_last_friend_num_url%%/" version='1.1' method="POST" 
-            content_type="application/x-www-form-urlencoded"
-            contents='_method=post&amp;authenticity_token=%%_users_authenticity_token%%'>
-            </http>
-        </request>
+        <if var="encoded_authenticity_token" neq="">
+          <request subst="true">
+              <http url="/%%_last_friend_num_url%%/" version='1.1' method="POST" 
+              content_type="application/x-www-form-urlencoded"
+              contents='_method=post&amp;authenticity_token=%%_encoded_users_authenticity_token%%'>
+              </http>
+          </request>
+        </if>
 
         <thinktime value="2" random="true"></thinktime>
         <!-- DELETE FRIEND -->
@@ -101,29 +131,41 @@
         <var name="last_delete_friend_url" />
         </setdynvars>
 
+        <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(users_profile_authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+          <var name="encoded_users_profile_authenticity_token" />
+        </setdynvars>
+
         <!-- delete the friend -->
-        <request subst="true">
-            <http url="/%%_last_delete_friend_url%%/" version='1.1' method="POST"
-            content_type="application/x-www-form-urlencoded"
-            contents='_method=delete&amp;authenticity_token=%%_users_profile_authenticity_token%%'>
-            </http>
-        </request>
+        <if var="encoded_users_profile_authenticity_token" neq="">
+          <request subst="true">
+              <http url="/%%_last_delete_friend_url%%/" version='1.1' method="POST"
+              content_type="application/x-www-form-urlencoded"
+              contents='_method=delete&amp;authenticity_token=%%_encoded_users_profile_authenticity_token%%'>
+              </http>
+          </request>
+        </if>
 
 
         <!--LOGOUT-->
         <request>
-            <dyn_variable name="users_profile_authenticity_token_logout" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-            <http url='/users/profile' version='1.1' method='GET'></http>
+          <dyn_variable name="authenticity_token_logout" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+          <http url='/users/profile' version='1.1' method='GET'></http>
         </request>
 
-        <request subst="true">
-            <http url='/d/users/sign_out'
-            version='1.1'
-            method='POST'
-            content_type="application/x-www-form-urlencoded"
-            contents='_method=delete&amp;authenticity_token=%%_users_profile_authenticity_token_logout%%'>
-            </http>
-        </request>
+        <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(authenticity_token_logout,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+          <var name="encoded_authenticity_token_logout" />
+        </setdynvars>
+
+        <if var="encoded_authenticity_token_logout" neq="">
+          <request subst="true">
+              <http url='/d/users/sign_out'
+              version='1.1'
+              method='POST'
+              content_type="application/x-www-form-urlencoded"
+              contents='_method=delete&amp;authenticity_token=%%_encoded_authenticity_token_logout%%'>
+              </http>
+          </request>
+        </if>
       
 
         

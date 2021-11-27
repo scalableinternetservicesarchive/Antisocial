@@ -2,11 +2,11 @@
 <!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
 <tsung loglevel="notice">
   <clients>
-    <client host="localhost" maxusers="100" use_controller_vm="true" />
+    <client host="localhost" maxusers="1000" use_controller_vm="true" />
   </clients>
 
   <servers>
-    <server host="localhost" port="3000" type="tcp"></server>
+    <server host="avani.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
@@ -29,8 +29,17 @@
       <users arrivalrate="64" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="7" duration="10" unit="second">
-      <users arrivalrate="128" unit="second"></users>
+      <users arrivalrate="80" unit="second"></users>
     </arrivalphase>
+    <!-- <arrivalphase phase="8" duration="10" unit="second">
+      <users arrivalrate="256" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="9" duration="10" unit="second">
+      <users arrivalrate="512" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="10" duration="10" unit="second">
+      <users arrivalrate="1024" unit="second"></users>
+    </arrivalphase> -->
   </load>
 
   <options>
@@ -43,7 +52,7 @@
     <session name="comments" weight="1" type="ts_http">
 
 
-       <!--  1) User logs in -->
+      <!--  1) User logs in -->
       <!-- LOGIN -->
       <request>
           <dyn_variable name="authenticity_token" ></dyn_variable>
@@ -55,104 +64,127 @@
 
       <!-- create a random number to make a unique first name -->
       <setdynvars sourcetype="random_number" start="1" end="100">
-          <var name="random_num" />
+        <var name="random_num" />
       </setdynvars>
 
+      <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+        <var name="encoded_authenticity_token" />
+      </setdynvars>
+
+
       <!-- user log in -->
+      <if var="encoded_authenticity_token" neq="">
       <request subst="true">
           <http
           url='/d/users/sign_in/'
           version='1.1'
           method='POST'
           content_type="application/x-www-form-urlencoded"
-          contents='authenticity_token=%%_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in'>
+          contents='authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in'>
+          </http>
+      </request>
+      </if>
+
+      <!-- VIEW POST -->
+      <request>
+        <dyn_variable name="post_url" xpath="/html/body//div[@class='card-body']//p/a/@href"></dyn_variable> 
+        <http url='/posts/' version='1.1' method='GET'></http>
+      </request>
+
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})->
+        {ok,Val}=ts_dynvars:lookup(post_url,DynVars),
+        lists:last(Val) end.' >
+        <var name="last_post_url" />
+      </setdynvars>
+
+      <!-- wait for up to 2 seconds -->
+      <!-- <thinktime value="2" random="true"></thinktime> -->
+      <setdynvars sourcetype="random_string" length="20">
+        <var name="random_string" />
+      </setdynvars>
+
+
+      <!-- GET POST -->
+      <request subst="true">
+          <dyn_variable name="comment_authenticity_token_one" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+          <http
+          url='/%%_last_post_url%%/'
+          version='1.1'
+          method='GET'>
           </http>
       </request>
 
-        <!-- VIEW POST -->
-        <request>
-          <dyn_variable name="post_url" xpath="/html/body//div[@class='card-body']//p/a/@href"></dyn_variable> 
-          <http url='/posts/' version='1.1' method='GET'></http>
-        </request>
+      <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(comment_authenticity_token_one,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+        <var name="encoded_comment_authenticity_token_one" />
+      </setdynvars>
 
-        <setdynvars sourcetype="eval"
-          code='fun({Pid,DynVars})->
-          {ok,Val}=ts_dynvars:lookup(post_url,DynVars),
-          lists:last(Val) end.' >
-          <var name="last_post_url" />
-        </setdynvars>
-
-
-
-
-
-        <!-- wait for up to 2 seconds -->
-        <!-- <thinktime value="2" random="true"></thinktime> -->
-        <setdynvars sourcetype="random_string" length="20">
-            <var name="random_string" />
-        </setdynvars>
-
-        <!-- GET POST -->
-        <request subst="true">
-            <dyn_variable name="comment_authenticity_token_one" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-            <http
-            url='/%%_last_post_url%%/'
-            version='1.1'
-            method='GET'>
-            </http>
-        </request>
-
-        <!--POST COMMENT-->
+      <!--POST COMMENT-->
+      <if var="encoded_comment_authenticity_token_one" neq="">
         <request subst="true">
             <http url="/%%_last_post_url%%/comments" version='1.1' method="POST"
             content_type="application/x-www-form-urlencoded"
-            contents='authenticity_token=%%_comment_authenticity_token_one%%&amp;comment%5Bbody%5D=%%_random_string%%&amp;commit=Create+Comment'>
+            contents='authenticity_token=%%_encoded_comment_authenticity_token_one%%&amp;comment%5Bbody%5D=%%_random_string%%&amp;commit=Create+Comment'>
             </http>
         </request>
+      </if>
 
-         <!-- wait for up to 2 seconds, user is typing names -->
-        <thinktime value="2" random="true"></thinktime>
+      
+      <!-- wait for up to 2 seconds, user is typing names -->
+      <thinktime value="2" random="true"></thinktime>
 
-        <request subst="true">
-            <dyn_variable name="comment_authenticity_token_two" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-            <dyn_variable name="delete_comment_url" xpath="/html/body//div[@class='container']//p/a/@href"></dyn_variable> 
-            <http
-            url='/%%_last_post_url%%/'
-            version='1.1'
-            method='GET'>
-            </http>
-        </request>
+      <request subst="true">
+          <dyn_variable name="comment_authenticity_token_two" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+          <dyn_variable name="delete_comment_url" xpath="/html/body//div[@class='container']//p/a/@href"></dyn_variable> 
+          <http
+          url='/%%_last_post_url%%/'
+          version='1.1'
+          method='GET'>
+          </http>
+      </request>
 
-        <setdynvars sourcetype="eval"
-          code='fun({Pid,DynVars})->
-          {ok,Val}=ts_dynvars:lookup(delete_comment_url,DynVars),
-          lists:last(Val) end.' >
-          <var name="last_delete_comment_url" />
-        </setdynvars>
+      <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(comment_authenticity_token_two,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+        <var name="encoded_comment_authenticity_token_two" />
+      </setdynvars>
 
-        <!--DELETE COMMENT-->
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})->
+        {ok,Val}=ts_dynvars:lookup(delete_comment_url,DynVars),
+        lists:last(Val) end.' >
+        <var name="last_delete_comment_url" />
+      </setdynvars>
+
+      <!--DELETE COMMENT-->
+      <if var="encoded_comment_authenticity_token_two" neq="">
         <request subst="true">
             <http url="/%%_last_delete_comment_url%%/" version='1.1' method="POST"
             content_type="application/x-www-form-urlencoded"
-            contents="_method=delete&amp;authenticity_token=%%_comment_authenticity_token_two%%">
+            contents="_method=delete&amp;authenticity_token=%%_encoded_comment_authenticity_token_two%%">
             </http>
         </request>
+      </if>
 
 
-        <!--LOGOUT-->
-        <request>
-            <dyn_variable name="users_profile_authenticity_token_logout" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-            <http url='/users/profile' version='1.1' method='GET'></http>
-        </request>
+      <!--LOGOUT-->
+      <request>
+          <dyn_variable name="users_profile_authenticity_token_logout" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
+          <http url='/users/profile' version='1.1' method='GET'></http>
+      </request>
 
+      <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(users_profile_authenticity_token_logout,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+        <var name="encoded_users_profile_authenticity_token_logout" />
+      </setdynvars>
+
+      <if var="encoded_users_profile_authenticity_token_logout" neq="">
         <request subst="true">
             <http url='/d/users/sign_out'
             version='1.1'
             method='POST'
             content_type="application/x-www-form-urlencoded"
-            contents='_method=delete&amp;authenticity_token=%%_users_profile_authenticity_token_logout%%'>
+            contents='_method=delete&amp;authenticity_token=%%_encoded_users_profile_authenticity_token_logout%%'>
             </http>
         </request>
+      </if>
         
     </session>
     

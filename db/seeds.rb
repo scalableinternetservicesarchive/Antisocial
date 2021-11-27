@@ -43,7 +43,14 @@ for i in 0..100 do
   u = (User.create! :nickname => 'user_'+i.to_s, :email => 'user_'+i.to_s+'@gmail.com', :password => 'Password1234', :password_confirmation => 'Password1234')
   users << u
 end
-puts "Users generation completed!"
+puts "Users generation completed"
+puts
+puts "Starting profile generation"
+for i in 0..100 do
+  p = Profile.create! :first_name => "f_name" + i.to_s, :last_name => "l_name" + i.to_s, :address => "address" + i.to_s,:about =>"about" + i.to_s, :user_id => users[i].id
+end
+puts "Profiles generation completed"
+
 puts
 #Create posts and relative comments
 puts "Starting post and comments generation..."
@@ -57,6 +64,7 @@ for i in 0..100 do
     c = Comment.create! :body => "Some comment for post "+i.to_s+", comment number "+j.to_s, :post => p, :user_id => users[from].id
   end
 end
+
 puts "Posts and comments generation completed!"
 puts
 

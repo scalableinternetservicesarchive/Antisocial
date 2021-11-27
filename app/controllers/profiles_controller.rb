@@ -3,15 +3,18 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    puts "profile"
-    puts current_user.id
     @profiles = Profile.where(user_id: current_user.id)
   end
 
   # GET /profiles/1 or /profiles/1.json
   def show
     id = params[:id]
+    @friend_ids = []
+    current_user.friends.each do |friendship|
+      @friend_ids <<   friendship.id
+    end
     @profile = Profile.find_by user_id: id
+
   end
 
   # GET /profiles/new

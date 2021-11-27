@@ -2,18 +2,19 @@
 
 <h1>Profile</h1>
 <% if current_user.id != @profile.user_id %>
-  <% if current_user.friends.include? @profile.user_id %>
-    <p><%= @profile.about%></p>
-    <p><%= @profile.first_name%></p>
-    <p><%= @profile.last_name%></p>
-    <p><%= @profile.address%></p>
+
+  <% if @friend_ids.include? @profile.user.id %>
+    <p><strong> About: </strong><%= @profile.about%></p>
+    <p><strong> First Name: </strong><%= @profile.first_name%></p>
+    <p><strong> Last Name: </strong><%= @profile.last_name%></p>
+    <p><strong> Address: </strong><%= @profile.address%></p>
   <% else %>
-    <p><%= @profile.about %></p>
+    <p><strong> About: </strong><%= @profile.about %></p>
   <% end %>
 <% else %>
-  <p><%= @profile.about%></p>
-  <p><%= @profile.first_name%></p>
-  <p><%= @profile.last_name%></p>
-  <p><%= @profile.address%></p>
+  <p><strong> About: </strong><%= @profile.about%></p>
+  <p><strong> First Name: </strong><%= @profile.first_name%></p>
+  <p><strong> Last Name: </strong><%= @profile.last_name%></p>
+  <p><strong> Address: </strong><%= @profile.address%></p>
 <%end%>>
 <%= link_to 'Back', profiles_path %>

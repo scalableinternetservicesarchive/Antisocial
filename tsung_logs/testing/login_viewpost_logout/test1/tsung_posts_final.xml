@@ -10,36 +10,18 @@
   </servers>
 
   <load>
-    <arrivalphase phase="1" duration="10" unit="second">
+    <arrivalphase phase="1" duration="5" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="5" unit="second">
       <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="2" duration="10" unit="second">
+    <arrivalphase phase="3" duration="5" unit="second">
       <users arrivalrate="4" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="3" duration="10" unit="second">
+    <arrivalphase phase="4" duration="5" unit="second">
       <users arrivalrate="8" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="4" duration="10" unit="second">
-      <users arrivalrate="16" unit="second"></users>
-    </arrivalphase>
-    <arrivalphase phase="5" duration="10" unit="second">
-      <users arrivalrate="32" unit="second"></users>
-    </arrivalphase>
-    <arrivalphase phase="6" duration="10" unit="second">
-      <users arrivalrate="64" unit="second"></users>
-    </arrivalphase>
-    <arrivalphase phase="7" duration="10" unit="second">
-      <users arrivalrate="128" unit="second"></users>
-    <!-- </arrivalphase>
-    <arrivalphase phase="8" duration="10" unit="second">
-      <users arrivalrate="256" unit="second"></users>
-    </arrivalphase>
-    <arrivalphase phase="9" duration="10" unit="second">
-      <users arrivalrate="512" unit="second"></users>
-    </arrivalphase>
-    <arrivalphase phase="10" duration="10" unit="second">
-      <users arrivalrate="1024" unit="second"></users>
-    </arrivalphase> -->
   </load>
 
   <options>
@@ -64,9 +46,9 @@
     <setdynvars sourcetype="random_number" start="1" end="100">
         <var name="random_num" />
      </setdynvars>
-
-    <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
-      <var name="encoded_authenticity_token" />
+     
+    <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(authenticity_token_logout,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
+      <var name="encoded_authenticity_token_logout" />
     </setdynvars>
 
 
@@ -89,14 +71,10 @@
 
 
     <!--      3) User create a new post-->
-    <request>
+    <!-- <request>
         <dyn_variable name="newpost_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
         <http url="/posts/new/" version="1.1" method="GET"></http>
     </request>
-
-    <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(newpost_authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
-      <var name="encoded_newpost_authenticity_token" />
-    </setdynvars>
 
     <thinktime value="2" random="true"></thinktime>
 
@@ -104,22 +82,18 @@
     <request subst="true">
         <http url="/posts/" method="POST" version="1.1"
             content_type="application/x-www-form-urlencoded"
-            contents="authenticity_token=%%_encoded_newpost_authenticity_token%%&amp;post%5Btitle%5D=AAAaaaaaa&amp;post%5Btext%5D=BBBBaaaa&amp;commit=Create+Post"/>
+            contents="authenticity_token=%%_newpost_authenticity_token%%&amp;post%5Btitle%5D=AAAaaaaaa&amp;post%5Btext%5D=BBBBaaaa&amp;commit=Create+Post"/>
     </request>
-    </if>
+    </if> -->
 
       <!--      4) User goes back to list of posts--> <!--Delete posts -->
 
 
-    <request>
+    <!-- <request>
         <dyn_variable name="delete_post_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
         <dyn_variable name="delete_post_url" xpath='/html/body//div[@class="card-body"]/p/a[@data-method="delete"]/@href'></dyn_variable> 
         <http url="/posts/" version="1.1" method="GET"></http>
     </request>
-
-    <setdynvars code='fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(delete_post_authenticity_token,DynVars),re:replace(Val,"[+]","%2B",[global,{return,list}]) end.' sourcetype="eval">
-      <var name="encoded_delete_post_authenticity_token" />
-    </setdynvars>
 
     <setdynvars sourcetype="eval"
         code='fun({Pid,DynVars})->
@@ -134,9 +108,9 @@
         <request subst="true">
         <http url="/%%_last_delete_post_url%%/" method="POST" version="1.1"
                 content_type="application/x-www-form-urlencoded"
-                contents="_method=delete&amp;authenticity_token=%%_encoded_delete_post_authenticity_token%%"/>
+                contents="_method=delete&amp;authenticity_token=%%_delete_post_authenticity_token%%"/>
         </request>
-    </if>
+    </if> -->
 
     <!--LOGOUT-->
     <request>

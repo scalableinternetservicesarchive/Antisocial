@@ -2,11 +2,11 @@
 <!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
 <tsung loglevel="notice">
   <clients>
-    <client host="localhost" maxusers="1000" use_controller_vm="true" />
+    <client host="localhost" maxusers="100" use_controller_vm="true" />
   </clients>
 
   <servers>
-    <server host="avani-test.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="localhost" port="3000" type="tcp"></server>
   </servers>
 
   <load>
@@ -21,6 +21,15 @@
     </arrivalphase>
     <arrivalphase phase="4" duration="10" unit="second">
       <users arrivalrate="16" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="5" duration="10" unit="second">
+      <users arrivalrate="32" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="10" unit="second">
+      <users arrivalrate="64" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="7" duration="10" unit="second">
+      <users arrivalrate="128" unit="second"></users>
     </arrivalphase>
   </load>
 

@@ -1,0 +1,33 @@
+####Steps to create eb deployment and seed!
+
+ssh -i ~/Downloads/Antisocial.pem Antisocial@ec2.cs291.com
+cd avani_test
+eb create --envvars SECRET_KEY_BASE=BADSECRET   -db.engine postgres -db.i db.t3.micro -db.user u   -i t3.micro --single avani
+eb ssh avani
+cd /var/app/current
+bin/rails db:seed
+
+#### Steps to create tsung instance
+ssh -i ~/Downloads/Antisocial.pem Antisocial@ec2.cs291.com
+ssh into ... (the address it gives you)
+launch_tsung.sh
+
+### Now use scp, transfer files and run tsung. Note - Dont forget changing the public ip (44-242-144-6)
+scp -i ~/Downloads/Antisocial.pem ~/tsung_posts_final.xml ec2-user@ec2-44-242-144-6.us-west-2.compute.amazonaws.com:~/
+tsung -f tsung_posts_final.xml -k start
+
+
+##How to save the logs! RUN this from your terminal, not from tsung ec2 instance
+# get the public ip address from tsung amazon ec2 instance! Remember - use dots!
+Be careful - change the public ip as per tsung instance!
+This is an example. Please use the following format  - ./tsung_logs/testing/FOLDER_NAME_WITH_BRIEF_DESCRIPTION_OF_TEST/TEST_NUMBER
+
+rsync -auvLe 'ssh -i ~/Downloads/Antisocial.pem'  ec2-user@44.242.144.6:tsung_logs ./tsung_logs/testing/login_viewpost_logout/test1
+
+
+### Graphs
+# graphs in ec2 tsung instance
+tsplot -d graphs first_try tsung_logs/20211109-0054/tsung.log second_try tsung_logs/20211109-0057/tsung.log
+RUN it from tsung_logs
+[ec2-user@ip-172-31-52-14 tsung_logs]$ tsplot -d graphs first_try 20211109-0054/tsung.log second_try 20211109-0057/tsung.log
+

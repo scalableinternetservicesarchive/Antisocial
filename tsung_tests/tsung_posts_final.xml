@@ -29,9 +29,9 @@
       <users arrivalrate="64" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="7" duration="10" unit="second">
-      <users arrivalrate="128" unit="second"></users>
-    <!-- </arrivalphase>
-    <arrivalphase phase="8" duration="10" unit="second">
+      <users arrivalrate="80" unit="second"></users>
+    </arrivalphase>
+    <!-- <arrivalphase phase="8" duration="10" unit="second">
       <users arrivalrate="256" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="9" duration="10" unit="second">
@@ -71,6 +71,7 @@
 
 
     <!-- user log in -->
+    <if var="encoded_authenticity_token" neq="">
     <request subst="true">
         <http
         url='/d/users/sign_in/'
@@ -80,6 +81,7 @@
         contents='authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in'>
         </http>
     </request>
+    </if>
 
       <!--      2) User looks at all posts-->
     <request><http method="GET" url="/posts/"></http></request>
@@ -100,7 +102,7 @@
 
     <thinktime value="2" random="true"></thinktime>
 
-    <if var="authenticity_token" neq="">
+    <if var="encoded_newpost_authenticity_token" neq="">
     <request subst="true">
         <http url="/posts/" method="POST" version="1.1"
             content_type="application/x-www-form-urlencoded"
@@ -130,12 +132,12 @@
 
 
 
-    <if var="posts_authenticity_token" neq="">
-        <request subst="true">
-        <http url="/%%_last_delete_post_url%%/" method="POST" version="1.1"
-                content_type="application/x-www-form-urlencoded"
-                contents="_method=delete&amp;authenticity_token=%%_encoded_delete_post_authenticity_token%%"/>
-        </request>
+    <if var="encoded_delete_post_authenticity_token" neq="">
+      <request subst="true">
+      <http url="/%%_last_delete_post_url%%/" method="POST" version="1.1"
+              content_type="application/x-www-form-urlencoded"
+              contents="_method=delete&amp;authenticity_token=%%_encoded_delete_post_authenticity_token%%"/>
+      </request>
     </if>
 
     <!--LOGOUT-->
@@ -148,14 +150,16 @@
       <var name="encoded_users_profile_authenticity_token_logout" />
     </setdynvars>
 
-    <request subst="true">
-        <http url='/d/users/sign_out'
-        version='1.1'
-        method='POST'
-        content_type="application/x-www-form-urlencoded"
-        contents='_method=delete&amp;authenticity_token=%%_encoded_users_profile_authenticity_token_logout%%'>
-        </http>
-    </request>
+    <if var="encoded_users_profile_authenticity_token_logout" neq="">
+      <request subst="true">
+          <http url='/d/users/sign_out'
+          version='1.1'
+          method='POST'
+          content_type="application/x-www-form-urlencoded"
+          contents='_method=delete&amp;authenticity_token=%%_encoded_users_profile_authenticity_token_logout%%'>
+          </http>
+      </request>
+    </if>
 
     </session>
   </sessions>

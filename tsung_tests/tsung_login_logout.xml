@@ -4,7 +4,7 @@
 <!-- <!DOCTYPE tsung SYSTEM "/usr/local/Cellar/tsung/1.7.0/share/tsung/tsung-1.0.dtd"> -->
 <tsung loglevel="notice">
   <clients>
-    <client host="localhost" maxusers="2000" use_controller_vm="true" />
+    <client host="localhost" maxusers="20000" use_controller_vm="true" />
   </clients>
 
   <servers>

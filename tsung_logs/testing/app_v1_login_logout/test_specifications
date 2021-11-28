@@ -1,0 +1,15 @@
+seed.rb:
+1000 users
+10000 posts 
+100000 friendships
+
+branch: tsung_load_testing_new_version
+
+testing: login-logout
+Basically testing how many connection a t3.micro can substain
+
+
+App env: t3.micro
+DB env: t3.micro
+
+

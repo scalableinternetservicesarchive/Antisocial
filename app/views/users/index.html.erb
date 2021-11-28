@@ -3,21 +3,25 @@
 <p>Find me in app/views/users/index.html.erb</p>
 <!--TODO: make sure a a user cannot add two times a friend-->
 <div class="">
-    <% @users.each do |user| %>
-      <% if user.email != current_user.email  %>
-    <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
-      <div class="card-header">
+  <% @users.each do |user| %>
+    <% if user.email != current_user.email  %>
+      <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
+        <div class="card-header">
           <%=h user.email %>
-      </div>
-      <div class="card-body">
-      <h5 class="card-title"> <%=h user.nickname %></h5>
-        <div id='user_id' class="card-title d-none"> <%=h user.id %></div>
-        <p class="card-text">Some user quote.</p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"> <%=h user.nickname %></h5>
+          <div id='user_id' class="card-title d-none"> <%=h user.id %></div>
+          <p class="card-text">Some user quote.</p>
           <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-    </div>
-    </div>
-      <% end %>
+        </div>
+      </div>
     <% end %>
+  <% end %>
+  <div id="NextUsersPage" class="d-flex justify-content-center">
+    <%= link_to "Next Page", users_path(page: @page +1) %>
+    |
+    <%= link_to "Previous Page", users_path(page: @page -1) %>
+  </div>
 
 </div>
-

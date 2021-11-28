@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     @page = params.fetch(:page, 0).to_i
-    @users = User.offset(@page * USERS_X_PAGE).limit(USERS_X_PAGE)
+    @users = User.order(created_at: :desc).offset(@page * USERS_X_PAGE).limit(USERS_X_PAGE)
   end
 
   def show
     @user = current_user
     @page = params.fetch(:page, 0).to_i
-    @friends = current_user.friendships.offset(@page * USERS_X_PAGE).limit(USERS_X_PAGE)
+    @friends = current_user.friendships.order(created_at: :desc).offset(@page * USERS_X_PAGE).limit(USERS_X_PAGE)
   end
 
   def posts

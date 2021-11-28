@@ -2,6 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <h1>This show the personal profile of the current user</h1>
 <h2>Friends</h2>
+
 <div class="">
   <% if @user %>
   <% @user.friendships&.each do |friendship| %>
@@ -15,6 +16,11 @@
     </div>
   <% end %>
   <% end %>
+  <div class ="d-flex justify-content-center">
+  <%= link_to "Next Page", users_profile_path(page: @page +1) %>
+  |
+  <%= link_to "Previous Page", users_profile_path(page: @page -1) %>
+  </div>
 </div>
 
 <p><%= link_to "Find New Friends", users_path %></p>

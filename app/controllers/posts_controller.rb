@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    ids = current_user.friends.pluck(:id) << current_user.id
+    ids = current_user&.friends&.pluck(:id) << current_user.id
     @posts = Post.where(user_id: ids)
   end
 

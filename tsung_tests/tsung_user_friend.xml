@@ -22,7 +22,7 @@
     <arrivalphase phase="4" duration="10" unit="second">
       <users arrivalrate="16" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="5" duration="10" unit="second">
+<!--     <arrivalphase phase="5" duration="10" unit="second">
       <users arrivalrate="32" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="6" duration="10" unit="second">
@@ -39,7 +39,7 @@
     </arrivalphase>
     <arrivalphase phase="10" duration="10" unit="second">
       <users arrivalrate="1024" unit="second"></users>
-    </arrivalphase>
+    </arrivalphase> -->
   </load>
 
   <options>
@@ -88,7 +88,7 @@
         <!--get users, i.e. go to users page  -->
         <request>
           <dyn_variable name="users_authenticity_token" xpath="//head/meta[@name='csrf-token']/@content"></dyn_variable>
-          <dyn_variable name="friend_num_url" xpath="/html/body//div[@class='card-body']/a/@href"></dyn_variable> 
+          <dyn_variable name="friend_num_url" xpath='/html/body/div/div/div/div/a[@data-method="post"]/@href'></dyn_variable> 
           <http url="/users/" version="1.1" method="GET"></http>
         </request>
 

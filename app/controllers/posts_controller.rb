@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  POSTS_X_PAGE = 5
 
   # GET /posts or /posts.json
   def index
     ids = current_user&.friends&.pluck(:id) << current_user.id
-    @page = params.fetch(:page, 0).to_i
+    @posts = Post.where(user_id: ids)
   end
 
   # GET /posts/1 or /posts/1.json

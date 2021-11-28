@@ -4,10 +4,6 @@
 <h2>Friends</h2>
 
 <div class="">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d182378af068b857ca695984cf9ae6af34387cae
   <% if @user %>
   <% @user.friendships&.each do |friendship| %>
     <div class="card text-white bg-dark mb-3 mx-auto col-md-8 mx-auto mx w-50">
@@ -20,17 +16,6 @@
     </div>
   <% end %>
   <% end %>
-  <div class ="d-flex justify-content-center">
-<<<<<<< HEAD
-    <%= link_to "Next Page", users_profile_path(page: @page +1) %>
-    |
-    <%= link_to "Previous Page", users_profile_path(page: @page -1) %>
-=======
-  <%= link_to "Next Page", users_profile_path(page: @page +1) %>
-  |
-  <%= link_to "Previous Page", users_profile_path(page: @page -1) %>
->>>>>>> d182378af068b857ca695984cf9ae6af34387cae
-  </div>
 </div>
 
 <p><%= link_to "Find New Friends", users_path %></p>

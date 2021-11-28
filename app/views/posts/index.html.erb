@@ -17,11 +17,6 @@
       </div>
     </div>
 <% end %>
-<dviv class ="d-flex justify-content-center">
-  <%= link_to "Next Page", posts_path(page: @page +1) %>
-  |
-  <%= link_to "Previous Page", posts_path(page: @page -1) %>
-</dviv>
 
 
 <%= link_to 'New Post', new_post_path %>

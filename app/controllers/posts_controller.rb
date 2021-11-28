@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   def index
     ids = current_user.friends.pluck(:id) << current_user.id
     @page = params.fetch(:page, 0).to_i
-    @posts = Post.where(user_id: ids).order(created_at: :desc).offset(@page * POSTS_X_PAGE).limit(POSTS_X_PAGE)
+    @posts = Post.where(user_id: ids)
+    #.order(created_at: :desc).offset(@page * POSTS_X_PAGE).limit(POSTS_X_PAGE)
   end
 
   # GET /posts/1 or /posts/1.json

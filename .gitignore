@@ -36,4 +36,8 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-/.idea
+/.idea./tsung_logs/testing/app_v2_posts_final/t3_large/20211128-2144/tsung_controller@ip-172-31-53-65.log
+./tsung_logs/testing/app_v2_posts_final/t3_medium/20211128-2129/tsung_controller@ip-172-31-51-196.log
+./tsung_logs/testing/app_v2_posts_final/HorizontalScaling4xt3Medium/20211128-2303/tsung_controller@ip-172-31-53-65.log
+./tsung_logs/testing/app_v2_posts_final/20211128-2000/tsung_controller@ip-172-31-51-196.log
+./log/development.log

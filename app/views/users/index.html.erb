@@ -1,7 +1,6 @@
 <h1>Users#index</h1>
 <h1>This shows a list of all users</h1>
 <p>Find me in app/views/users/index.html.erb</p>
-
 <!--TODO: make sure a a user cannot add two times a friend-->
 <div class="">
     <% @users.each do |user| %>
@@ -19,14 +18,11 @@
     </div>
       <% end %>
     <% end %>
+  <div id="NextUsersPage" class="d-flex justify-content-center">
+    <%= link_to "Next Page", users_path(page: @page +1) %>
+    |
+    <%= link_to "Previous Page", users_path(page: @page -1) %>
+  </div>
+
 </div>
 
-
-
-<!--<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">-->
-<!--  <div class="card-header">Header</div>-->
-<!--  <div class="card-body">-->
-<!--    <h5 class="card-title">Dark card title</h5>-->
-<!--    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--  </div>-->
-<!--</div>-->

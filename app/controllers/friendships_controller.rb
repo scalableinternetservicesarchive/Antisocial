@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
       redirect_to root_url
     else
       flash[:error] = "Error occurred when adding friend."
-      redirect_to root_url
+      # redirect_to root_url
     end
   end
 

@@ -126,7 +126,7 @@
     <setdynvars sourcetype="eval"
         code='fun({Pid,DynVars})->
         {ok,Val}=ts_dynvars:lookup(delete_post_url,DynVars),
-        lists:last(Val) end.' >
+        lists:nth(1,Val) end.' >
         <var name="last_delete_post_url" />
     </setdynvars>
 

@@ -99,7 +99,7 @@
         <setdynvars sourcetype="eval"
           code='fun({Pid,DynVars})->
           {ok,Val}=ts_dynvars:lookup(friend_num_url,DynVars),
-          lists:last(Val) end.'>
+        lists:nth(1,Val) end.' >
           <var name="last_friend_num_url" />
         </setdynvars>
       
@@ -127,7 +127,7 @@
         <setdynvars sourcetype="eval"
           code='fun({Pid,DynVars})->
           {ok,Val}=ts_dynvars:lookup(delete_friend_url,DynVars),
-          lists:last(Val) end.'>
+        lists:nth(1,Val) end.' >
         <var name="last_delete_friend_url" />
         </setdynvars>
 

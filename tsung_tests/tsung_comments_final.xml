@@ -6,7 +6,7 @@
   </clients>
 
   <servers>
-    <server host="yon02.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="yonHscaling4t3medium.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>

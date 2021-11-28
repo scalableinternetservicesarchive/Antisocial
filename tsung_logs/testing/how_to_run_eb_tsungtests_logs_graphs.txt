@@ -31,3 +31,8 @@ tsplot -d graphs first_try tsung_logs/20211109-0054/tsung.log second_try tsung_l
 RUN it from tsung_logs
 [ec2-user@ip-172-31-52-14 tsung_logs]$ tsplot -d graphs first_try 20211109-0054/tsung.log second_try 20211109-0057/tsung.log
 
+Horizontal scaling
+
+
+Vertical Scaling
+eb create --envvars SECRET_KEY_BASE=BADSECRET   -db.engine postgres -db.i db.t3.micro -db.user u   -i t3.medium --min-instances 4 --max-instances 4 yonHscaling4t3medium

@@ -6,7 +6,7 @@
   </clients>
 
   <servers>
-    <server host="yon002.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="yonHscaling4t3medium.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
@@ -22,24 +22,24 @@
     <arrivalphase phase="4" duration="10" unit="second">
       <users arrivalrate="16" unit="second"></users>
     </arrivalphase>
-<!--    <arrivalphase phase="5" duration="10" unit="second">-->
-<!--      <users arrivalrate="32" unit="second"></users>-->
-<!--    </arrivalphase>-->
-<!--    <arrivalphase phase="6" duration="10" unit="second">-->
-<!--      <users arrivalrate="64" unit="second"></users>-->
-<!--    </arrivalphase>-->
-<!--    <arrivalphase phase="7" duration="10" unit="second">-->
-<!--      <users arrivalrate="80" unit="second"></users>-->
-<!--    </arrivalphase>-->
-<!--    <arrivalphase phase="8" duration="10" unit="second">-->
-<!--      <users arrivalrate="256" unit="second"></users>-->
-<!--    </arrivalphase>-->
-<!--    <arrivalphase phase="9" duration="10" unit="second">-->
-<!--      <users arrivalrate="512" unit="second"></users>-->
-<!--    </arrivalphase>-->
-<!--    <arrivalphase phase="10" duration="10" unit="second">-->
-<!--      <users arrivalrate="1024" unit="second"></users>-->
-<!--    </arrivalphase>-->
+    <arrivalphase phase="5" duration="10" unit="second">
+      <users arrivalrate="32" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="10" unit="second">
+      <users arrivalrate="64" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="7" duration="10" unit="second">
+      <users arrivalrate="80" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="8" duration="10" unit="second">
+      <users arrivalrate="256" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="9" duration="10" unit="second">
+      <users arrivalrate="512" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="10" duration="10" unit="second">
+      <users arrivalrate="1024" unit="second"></users>
+    </arrivalphase>
   </load>
 
   <options>

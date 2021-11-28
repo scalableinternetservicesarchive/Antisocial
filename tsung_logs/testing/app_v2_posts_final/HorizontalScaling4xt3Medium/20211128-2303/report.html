@@ -1,0 +1,269 @@
+<html>
+  <head>
+    <title>Tsung - Stats Report </title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="Index" href="/"/>
+    <script type="text/javascript" src="style/dygraph-combined.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+    <link href="style/dashboard.css" rel="stylesheet">
+    <link href="style/docs.min.css" rel="stylesheet">
+
+  </head>
+<body>
+    <script src="style/jquery.min.js"></script>
+    <script src="style/bootstrap.min.js"></script>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Tsung <!-- SUBTITLE --></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/es/ts_web:status">Status</a></li>
+            <li><a href="report.html">Reports</a></li>
+            <li><a href="graph.html">Graphs</a></li>
+            <li><a href="/es/ts_web:logs">Logs</a></li>
+            <li><a href="/es/ts_web:stop">Stop</a></li>
+            <!-- <li><a href="tsung_posts_final.xml">Config</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="report.html#stats">Main statistics</a></li>
+            <li><a href="report.html#transaction">Transactions</a></li>
+            <li><a href="report.html#network">Network Throughput</a></li>
+            <li><a href="report.html#count">Counters</a></li>
+            <li><a href="report.html#os_mon">Server monitoring</a></li>
+            <li><a href="report.html#http_status">HTTP status</a></li>
+            <li><a href="report.html#errors">Errors</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="graph.html#response_time">Response times</a></li>
+            <li><a href="graph.html#throughput">Throughput graphs</a></li>
+            <li><a href="graph.html#users">Simultaneous Users</a></li>
+            <li><a href="graph.html#os_mon">Server monitoring</a></li>
+            <li><a href="graph.html#http_status">HTTP status</a></li>
+            <li><a href="graph.html#errors">Errors</a></li>
+          </ul>
+       </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+<div class="row placeholders">
+<!-- tsung_stats_duration -->
+</div>
+
+
+
+ <h3 id="stats" class="sub-header">Main Statistics</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">highest 10sec
+ mean</th> <th class="stats">lowest 10sec mean </th><th
+ class="stats">Highest Rate</th><th class="stats">Mean Rate</stats><th class="stats"> Mean </th><th class="stats">Count</th>
+  </tr>
+     <tr>
+		<td class="stats">connect</td>
+		<td class="stats">2.65 msec </td>
+		<td class="stats">1.28 msec</td>
+		<td class="stats">595.2 / sec</td>
+		<td class="stats">126.50 / sec</td>
+		<td class="stats">2.06 msec </td>
+		<td class="stats">15192 </td>
+     </tr>
+     <tr>
+		<td class="stats">page</td>
+		<td class="stats">2.87 sec </td>
+		<td class="stats">24.56 msec</td>
+		<td class="stats">1671.2 / sec</td>
+		<td class="stats">391.83 / sec</td>
+		<td class="stats">0.87 sec </td>
+		<td class="stats">47054 </td>
+     </tr>
+     <tr>
+		<td class="stats">request</td>
+		<td class="stats">1.99 sec </td>
+		<td class="stats">13.60 msec</td>
+		<td class="stats">2425.5 / sec</td>
+		<td class="stats">595.67 / sec</td>
+		<td class="stats">0.57 sec </td>
+		<td class="stats">71541 </td>
+     </tr>
+     <tr>
+		<td class="stats">session</td>
+		<td class="stats">28.29 sec </td>
+		<td class="stats">3.38 sec</td>
+		<td class="stats">529.8 / sec</td>
+		<td class="stats">126.54 / sec</td>
+		<td class="stats">6.71 sec </td>
+		<td class="stats">15190 </td>
+     </tr>
+ </table>
+ </div>
+
+ <h3 id="transaction" class="sub-header">Transactions Statistics</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">highest 10sec
+ mean</th> <th class="stats">lowest 10sec mean</th><th
+ class="stats">Highest Rate</th><th class="stats">Mean Rate</stats><th class="stats"> Mean </th><th class="stats">Count</th>
+  </tr>
+ </table>
+</div>
+
+ <h3 id="network" class="sub-header">Network Throughput</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">Highest Rate</th><th class="stats">Total</th>
+  </tr>
+     <tr>
+		<td class="stats">size_rcv</td>
+		<td class="stats">14.73 Mbits/sec</td>
+		<td class="stats">82.13 MB</td>
+     </tr>
+     <tr>
+		<td class="stats">size_sent</td>
+		<td class="stats">4.32 Mbits/sec</td>
+		<td class="stats">21.16 MB</td>
+     </tr>
+ </table>
+</div>
+
+ <h3 id="count" class="sub-header">Counters Statistics</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">Highest Rate</th><th class="stats">Mean Rate</th><th class="stats">Total number</th>
+  </tr>
+ </table>
+<p>
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">Max</th> </tr>
+     <tr>
+		<td class="stats">connected</td>
+		<td class="stats">3289 </td>
+     </tr>
+     <tr>
+		<td class="stats">finish_users_count</td>
+		<td class="stats">15192 </td>
+     </tr>
+     <tr>
+		<td class="stats">newphase</td>
+		<td class="stats">9 </td>
+     </tr>
+     <tr>
+		<td class="stats">users</td>
+		<td class="stats">3342 </td>
+     </tr>
+     <tr>
+		<td class="stats">users_count</td>
+		<td class="stats">15192 </td>
+     </tr>
+ </table>
+</p>
+</div>
+
+ <h3 class="sub-header">Errors</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">Highest Rate</th><th class="stats">Total number</th>
+  </tr>
+     <tr>
+		<td class="stats">error_unknown</td>
+		<td class="stats">519.5 / sec</td>
+		<td class="stats">14386 </td>
+     </tr>
+ </table>
+</div>
+
+ <h3 id="os_mon" class="sub-header">Server monitoring</h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Name</th> <th class="stats">highest 10sec
+  mean</th><th class="stats">lowest 10sec mean</th>
+  </tr>
+     <tr>
+		<td class="stats">cpu:os_mon@tsung_controller@ip-172-31-53-65</td>
+		<td class="stats">95.96 %</td>
+		<td class="stats">3.03 %</td>
+     </tr>
+     <tr>
+		<td class="stats">freemem:os_mon@tsung_controller@ip-172-31-53-65</td>
+		<td class="stats">661.09 MB</td>
+		<td class="stats">184.40 MB</td>
+     </tr>
+     <tr>
+		<td class="stats">load:os_mon@tsung_controller@ip-172-31-53-65</td>
+		<td class="stats">1.02 </td>
+		<td class="stats">0.10 </td>
+     </tr>
+ </table>
+</div>
+
+
+ <h3 id="http_status" class="sub-header">HTTP return code </h3>
+ <div class="table-responsive">
+ <table class="table table-striped table-bordered">
+  <tr><th class="stats">Code</th>  <th class="stats">Highest Rate</th><th class="stats">Mean Rate</th><th class="stats">Total number</th>
+  </tr>
+     <tr>
+		<td class="stats">200</td>
+		<td class="stats">211.5 / sec</td>
+		<td class="stats">94.59 / sec</td>
+		<td class="stats">11393</td>
+     </tr>
+     <tr>
+		<td class="stats">302</td>
+		<td class="stats">59.1 / sec</td>
+		<td class="stats">32.44 / sec</td>
+		<td class="stats">3920</td>
+     </tr>
+     <tr>
+		<td class="stats">404</td>
+		<td class="stats">0.9 / sec</td>
+		<td class="stats">0.30 / sec</td>
+		<td class="stats">30</td>
+     </tr>
+     <tr>
+		<td class="stats">500</td>
+		<td class="stats">269.5 / sec</td>
+		<td class="stats">109.89 / sec</td>
+		<td class="stats">7692</td>
+     </tr>
+     <tr>
+		<td class="stats">502</td>
+		<td class="stats">1993.4 / sec</td>
+		<td class="stats">693.07 / sec</td>
+		<td class="stats">48515</td>
+     </tr>
+ </table>
+</div>
+<footer class="bs-docs-footer" role="contentinfo">
+  <ul class="bs-docs-footer-links muted">
+    <li>Tsung version 1.7.0</li>
+    <li><address>
+        Contact:   <a href="mailto:tsung-users@process-one.net">tsung-users@process-one.net</a>
+        </address>
+     </li>
+   </ul>
+</footer>
+ </div>
+ </div>
+</div>
+</body>
+</html>
+

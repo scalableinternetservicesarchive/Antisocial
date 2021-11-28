@@ -2,11 +2,11 @@
 <!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
 <tsung loglevel="notice">
   <clients>
-    <client host="localhost" maxusers="1000" use_controller_vm="true" />
+    <client host="localhost" maxusers="20000" use_controller_vm="true" />
   </clients>
 
   <servers>
-    <server host="avani.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="yonHscaling4t3medium.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>

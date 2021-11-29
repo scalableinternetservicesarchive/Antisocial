@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2de910f-f354-4e1a-b174-babefe5754ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.ebextensions/02_performance.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/puma.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/puma.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +218,7 @@
       <workItem from="1637717529757" duration="20281000" />
       <workItem from="1638064987432" duration="1008000" />
       <workItem from="1638066234028" duration="472000" />
-      <workItem from="1638073651736" duration="8737000" />
+      <workItem from="1638073651736" duration="9851000" />
     </task>
     <servers />
   </component>

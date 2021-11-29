@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2de910f-f354-4e1a-b174-babefe5754ed" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.ebextensions/02_performance.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/request_mean.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/request_mean.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/request_mean.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/request_mean.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_tests/ListPosts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_tests/ListPosts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_tests/ListUsers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_tests/ListUsers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsung_tests/tsung_posts_final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_tests/tsung_posts_final.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +226,7 @@
       <workItem from="1637717529757" duration="20281000" />
       <workItem from="1638064987432" duration="1008000" />
       <workItem from="1638066234028" duration="472000" />
-      <workItem from="1638073651736" duration="9851000" />
+      <workItem from="1638073651736" duration="11167000" />
     </task>
     <servers />
   </component>

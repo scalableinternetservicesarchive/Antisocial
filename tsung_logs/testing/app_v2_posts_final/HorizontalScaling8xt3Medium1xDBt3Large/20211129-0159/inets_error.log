@@ -1,0 +1,15 @@
+[29/Nov/2021:02:01:11 -0000] access to /assets/ico/favicon.ico failed for 169.231.180.20, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211129-0159/assets/ico/favicon.ico: File not found"
+[29/Nov/2021:02:01:11 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /assets/ico/favicon.ico, Host: 172.31.61.29:8091, Peer: 169.231.180.20:59468, Reason: [{statuscode,404},{description,"Object Not Found"}]
+[29/Nov/2021:02:02:03 -0000] access to /assets/ico/favicon.ico failed for 169.231.180.20, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211129-0159/assets/ico/favicon.ico: File not found"
+[29/Nov/2021:02:02:03 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /assets/ico/favicon.ico, Host: 172.31.61.29:8091, Peer: 169.231.180.20:59468, Reason: [{statuscode,404},{description,"Object Not Found"}]
+[29/Nov/2021:02:02:05 -0000] access to /assets/ico/favicon.ico failed for 169.231.180.20, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211129-0159/assets/ico/favicon.ico: File not found"
+[29/Nov/2021:02:02:05 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /assets/ico/favicon.ico, Host: 172.31.61.29:8091, Peer: 169.231.180.20:59466, Reason: [{statuscode,404},{description,"Object Not Found"}]
+[29/Nov/2021:02:02:07 -0000] access to /assets/ico/favicon.ico failed for 169.231.180.20, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211129-0159/assets/ico/favicon.ico: File not found"
+[29/Nov/2021:02:02:07 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /assets/ico/favicon.ico, Host: 172.31.61.29:8091, Peer: 169.231.180.20:59465, Reason: [{statuscode,404},{description,"Object Not Found"}]
+[29/Nov/2021:02:02:08 -0000] access to /assets/ico/favicon.ico failed for 169.231.180.20, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211129-0159/assets/ico/favicon.ico: File not found"
+[29/Nov/2021:02:02:08 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /assets/ico/favicon.ico, Host: 172.31.61.29:8091, Peer: 169.231.180.20:59469, Reason: [{statuscode,404},{description,"Object Not Found"}]

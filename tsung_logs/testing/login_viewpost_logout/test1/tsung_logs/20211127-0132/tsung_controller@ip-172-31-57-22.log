@@ -1,0 +1,26 @@
+
+=INFO REPORT==== 27-Nov-2021::01:32:32 ===
+    ts_config_server:(5:<0.127.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20211127-0132"
+ 
+=INFO REPORT==== 27-Nov-2021::01:32:32 ===
+              ts_mon:(5:<0.110.0>) starting monitor, global 
+
+=INFO REPORT==== 27-Nov-2021::01:32:32 ===
+           ts_config:(5:<0.127.0>) Reading config file: tsung_posts_final.xml
+
+=ERROR REPORT==== 27-Nov-2021::01:32:32 ===
+2557- fatal: {endtag_does_not_match,{was,session,should_have_been,setdynvars}}
+
+=INFO REPORT==== 27-Nov-2021::01:32:32 ===
+    ts_config_server:(0:<0.127.0>) Error while parsing XML config file: {fatal,
+                                                                         {{endtag_does_not_match,
+                                                                           {was,
+                                                                            session,
+                                                                            should_have_been,
+                                                                            setdynvars}},
+                                                                          {file,
+                                                                           "tsung_posts_final.xml"},
+                                                                          {line,
+                                                                           133},
+                                                                          {col,
+                                                                           7}}}

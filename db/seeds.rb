@@ -39,7 +39,7 @@ Friendship.delete_all
 #
 puts "Starting users generation..."
 users = []
-for i in 0..100 do
+for i in 0..1000 do
   u = (User.create! :nickname => 'user_'+i.to_s, :email => 'user_'+i.to_s+'@gmail.com', :password => 'Password1234', :password_confirmation => 'Password1234')
   users << u
 end
@@ -54,11 +54,11 @@ puts "Profiles generation completed"
 puts
 #Create posts and relative comments
 puts "Starting post and comments generation..."
-for i in 0..100 do
+for i in 0..10000 do
   users_len = users.length()
   from = rand(0..users_len-1)
   p = Post.create! :title => 'Some Title '+i.to_s, :text => 'Some Text D'+i.to_s, :user_id => users[from].id
-  for j in 0..5 do
+  for j in 0..10 do
     users_len = users.length()
     from = rand(0..users_len-1)
     c = Comment.create! :body => "Some comment for post "+i.to_s+", comment number "+j.to_s, :post => p, :user_id => users[from].id
@@ -74,7 +74,7 @@ puts
 # Generate friendships
 #
 puts "Starting followship generation..."
-for i in 0..1000
+for i in 0..100000
   users_len = users.length()
   from = rand(0..users_len-1)
   to = rand(0..users_len-1)

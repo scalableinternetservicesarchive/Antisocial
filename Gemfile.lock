@@ -221,7 +221,7 @@ DEPENDENCIES
   byebug
   capybara (~> 3.35.3)
   devise (>= 4.8.0)
-  i18n (~> 1.8.11)
+  i18n (~> 1.8.10)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)

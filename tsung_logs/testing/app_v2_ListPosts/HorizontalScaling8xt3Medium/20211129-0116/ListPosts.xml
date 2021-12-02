@@ -1,0 +1,77 @@
+<?xml version="1.0"?><tsung loglevel="notice">
+  <clients>
+    <client host="localhost" maxusers="20000" use_controller_vm="true"/>
+  </clients>
+
+  <servers>
+    <server host="yonHscaling8t3medium.eba-fz2dfqnp.us-west-2.elasticbeanstalk.com" port="80" type="tcp"/>
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="10" unit="second">
+      <users arrivalrate="2" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="10" unit="second">
+      <users arrivalrate="4" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="10" unit="second">
+      <users arrivalrate="8" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="10" unit="second">
+      <users arrivalrate="16" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="5" duration="10" unit="second">
+      <users arrivalrate="32" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="10" unit="second">
+      <users arrivalrate="64" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="7" duration="10" unit="second">
+      <users arrivalrate="80" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="8" duration="10" unit="second">
+      <users arrivalrate="256" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="9" duration="10" unit="second">
+      <users arrivalrate="512" unit="second"/>
+    </arrivalphase>
+    <arrivalphase phase="10" duration="10" unit="second">
+      <users arrivalrate="1024" unit="second"/>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <option name="global_ack_timeout" value="2000"/>
+  </options>
+
+  <sessions>
+    <session name="GetListOfPosts" type="ts_http" weight="1">
+
+      <request>
+        <dyn_variable name="authenticity_token"/>
+        <http url="/d/users/sign_in/" version="1.1" method="GET"/>
+      </request>
+
+      <thinktime value="2" random="true"/>
+
+      <setdynvars sourcetype="random_number" start="1" end="100">
+        <var name="random_num"/>
+      </setdynvars>
+
+      <setdynvars code="fun({Pid,DynVars})->{ok,Val}=ts_dynvars:lookup(authenticity_token,DynVars),re:replace(Val,&quot;[+]&quot;,&quot;%2B&quot;,[global,{return,list}]) end." sourcetype="eval">
+        <var name="encoded_authenticity_token"/>
+      </setdynvars>
+
+
+      <if var="encoded_authenticity_token" neq="">
+        <request subst="true">
+          <http url="/d/users/sign_in/" version="1.1" method="POST" content_type="application/x-www-form-urlencoded" contents="authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bemail%5D=user_%%_random_num%%%40gmail.com&amp;user%5Bpassword%5D=Password1234&amp;user%5Bremember_me%5D=0&amp;commit=Log+in">
+          </http>
+        </request>
+      </if>
+
+      <request><http method="GET" url="/posts/"/></request>
+
+    </session>
+  </sessions>
+</tsung>

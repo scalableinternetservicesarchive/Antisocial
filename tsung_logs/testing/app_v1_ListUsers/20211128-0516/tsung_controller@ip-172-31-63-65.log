@@ -1,0 +1,178 @@
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+    ts_config_server:(5:<0.127.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20211128-0516"
+ 
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+              ts_mon:(5:<0.110.0>) starting monitor, global 
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+           ts_config:(5:<0.127.0>) Reading config file: ListUsers.xml
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+           ts_config:(5:<0.127.0>) Session name for id 1 is "user friend"
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Tsung version: 1.7.0
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Erlang version: Erlang/OTP 22 [erts-10.6] [source] [64-bit] [smp:2:2] [ds:2:2:10] [async-threads:8] [hipe]
+
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:System architecture x86_64-redhat-linux-gnu
+
+=INFO REPORT==== 28-Nov-2021::05:16:58 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Current path: /usr/lib/tsung/tsung-1.7.0/ebin/tsung.beam
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+              ts_mon:(5:<0.128.0>) Activate clients with text backend
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+              ts_mon:(5:<0.128.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+    ts_config_server:(5:<0.127.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+  ts_launcher_static:(5:<0.181.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+         ts_launcher:(5:<0.182.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 1 for client "localhost" (last ? true): will start 20 users
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 2 for client "localhost" (last ? true): will start 40 users
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 3 for client "localhost" (last ? true): will start 80 users
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 4 for client "localhost" (last ? true): will start 160 users
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+         ts_launcher:(5:<0.182.0>) Expected duration of first phase: 10.0 sec (20 users) 
+
+=INFO REPORT==== 28-Nov-2021::05:16:59 ===
+         ts_launcher:(5:<0.182.0>) Activate launcher (20 users) in 1210 msec 
+
+=INFO REPORT==== 28-Nov-2021::05:17:09 ===
+         ts_launcher:(4:<0.182.0>) Need to wait 0.204 sec before changing phase, going to sleep
+
+=INFO REPORT==== 28-Nov-2021::05:17:10 ===
+         ts_launcher:(5:<0.182.0>) Waking up
+
+=INFO REPORT==== 28-Nov-2021::05:17:10 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (40 users, 0.004); expected duration=10.0 sec
+
+=INFO REPORT==== 28-Nov-2021::05:17:20 ===
+         ts_launcher:(5:<0.182.0>) Phase duration exceeded, but not all users were launched (1 users, 2.5% of phase)
+
+=INFO REPORT==== 28-Nov-2021::05:17:20 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (80 users, 0.008); expected duration=10.0 sec
+
+=INFO REPORT==== 28-Nov-2021::05:17:30 ===
+         ts_launcher:(4:<0.182.0>) Phase duration exceeded, more than 20% (22.5%) of users were not launched in time (18 users), tsung may be overloaded !
+
+=INFO REPORT==== 28-Nov-2021::05:17:30 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (160 users, 0.016); expected duration=10.0 sec
+
+=INFO REPORT==== 28-Nov-2021::05:17:40 ===
+         ts_launcher:(5:<0.182.0>) Phase duration exceeded, but not all users were launched (1 users, 0.6% of phase)
+
+=INFO REPORT==== 28-Nov-2021::05:17:40 ===
+         ts_launcher:(5:<0.182.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 28-Nov-2021::05:17:51 ===
+           ts_search:(5:<0.401.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:51 ===
+           ts_search:(5:<0.401.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:52 ===
+           ts_search:(5:<0.360.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:52 ===
+           ts_search:(5:<0.360.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:52 ===
+           ts_search:(5:<0.364.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:52 ===
+           ts_search:(5:<0.364.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:54 ===
+           ts_search:(5:<0.393.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:54 ===
+           ts_search:(5:<0.393.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:58 ===
+           ts_search:(5:<0.384.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:58 ===
+           ts_search:(5:<0.384.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:58 ===
+           ts_search:(5:<0.418.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:17:58 ===
+           ts_search:(5:<0.418.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:01 ===
+           ts_search:(5:<0.449.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:01 ===
+           ts_search:(5:<0.449.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:01 ===
+           ts_search:(5:<0.428.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:01 ===
+           ts_search:(5:<0.428.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:02 ===
+           ts_search:(5:<0.451.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:02 ===
+           ts_search:(5:<0.451.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:02 ===
+           ts_search:(5:<0.409.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:02 ===
+           ts_search:(5:<0.409.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:03 ===
+           ts_search:(5:<0.458.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:03 ===
+           ts_search:(5:<0.458.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.493.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.493.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.491.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.420.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.420.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.491.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.477.0>) Dyn Var: no Match (varname=friend_num_url), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:04 ===
+           ts_search:(5:<0.477.0>) Dyn Var: no Match (varname=users_authenticity_token), 
+
+=INFO REPORT==== 28-Nov-2021::05:18:10 ===
+     ts_launcher_mgr:(5:<0.175.0>) No more active users 'tsung_controller@ip-172-31-63-65' "2661"

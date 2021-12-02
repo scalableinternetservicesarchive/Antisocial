@@ -1,0 +1,133 @@
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(5:<0.127.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20211127-0107"
+ 
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+              ts_mon:(5:<0.110.0>) starting monitor, global 
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+           ts_config:(5:<0.127.0>) Reading config file: tsung_posts_final.xml
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+           ts_config:(5:<0.127.0>) Session name for id 1 is "CreateNewPost"
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Tsung version: 1.7.0
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Erlang version: Erlang/OTP 22 [erts-10.6] [source] [64-bit] [smp:2:2] [ds:2:2:10] [async-threads:8] [hipe]
+
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:System architecture x86_64-redhat-linux-gnu
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(4:<0.127.0>) SYSINFO:Current path: /usr/lib/tsung/tsung-1.7.0/ebin/tsung.beam
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+              ts_mon:(5:<0.128.0>) Activate clients with text backend
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+              ts_mon:(5:<0.128.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(5:<0.127.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+  ts_launcher_static:(5:<0.181.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+         ts_launcher:(5:<0.182.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 1 for client "localhost" (last ? true): will start 5 users
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 2 for client "localhost" (last ? true): will start 10 users
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 3 for client "localhost" (last ? true): will start 20 users
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+    ts_config_server:(5:<0.127.0>) New arrival phase 4 for client "localhost" (last ? true): will start 40 users
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+         ts_launcher:(5:<0.182.0>) Expected duration of first phase: 5.0 sec (5 users) 
+
+=INFO REPORT==== 27-Nov-2021::01:07:53 ===
+         ts_launcher:(5:<0.182.0>) Activate launcher (5 users) in 1192 msec 
+
+=INFO REPORT==== 27-Nov-2021::01:07:59 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (10 users, 0.002); expected duration=5.0 sec
+
+=INFO REPORT==== 27-Nov-2021::01:08:05 ===
+         ts_launcher:(5:<0.182.0>) Phase duration exceeded, but not all users were launched (2 users, 20.0% of phase)
+
+=INFO REPORT==== 27-Nov-2021::01:08:05 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (20 users, 0.004); expected duration=5.0 sec
+
+=INFO REPORT==== 27-Nov-2021::01:08:10 ===
+         ts_launcher:(4:<0.182.0>) Need to wait 0.02 sec before changing phase, going to sleep
+
+=INFO REPORT==== 27-Nov-2021::01:08:10 ===
+         ts_launcher:(5:<0.182.0>) Waking up
+
+=INFO REPORT==== 27-Nov-2021::01:08:10 ===
+         ts_launcher:(5:<0.182.0>) Start a new arrival phase (40 users, 0.008); expected duration=5.0 sec
+
+=INFO REPORT==== 27-Nov-2021::01:08:15 ===
+         ts_launcher:(5:<0.182.0>) Phase duration exceeded, but not all users were launched (3 users, 7.5% of phase)
+
+=INFO REPORT==== 27-Nov-2021::01:08:15 ===
+         ts_launcher:(5:<0.182.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.258.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.236.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.252.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.274.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.273.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.232.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:21 ===
+           ts_search:(5:<0.271.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:22 ===
+           ts_search:(5:<0.227.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:22 ===
+           ts_search:(5:<0.275.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:22 ===
+           ts_search:(5:<0.237.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:22 ===
+           ts_search:(5:<0.230.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:24 ===
+           ts_search:(5:<0.248.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:24 ===
+           ts_search:(5:<0.238.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:24 ===
+           ts_search:(5:<0.276.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:24 ===
+           ts_search:(5:<0.235.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:24 ===
+           ts_search:(5:<0.261.0>) Dyn Var: no Match (varname=users_profile_authenticity_token_logout), 
+
+=INFO REPORT==== 27-Nov-2021::01:08:30 ===
+     ts_launcher_mgr:(5:<0.175.0>) No more active users 'tsung_controller@ip-172-31-57-22' "2555"

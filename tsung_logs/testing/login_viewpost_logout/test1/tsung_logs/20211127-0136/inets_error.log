@@ -1,0 +1,6 @@
+[27/Nov/2021:01:36:20 -0000] access to /favicon.ico failed for 169.231.56.235, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211127-0136/favicon.ico: File not found"
+[27/Nov/2021:01:36:20 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /favicon.ico, Host: 172.31.57.22:8091, Peer: 169.231.56.235:46276, Reason: [{statuscode,404},{description,"Object Not Found"}]
+[27/Nov/2021:01:38:02 -0000] access to /boaform/admin/formLogin?username=adminisp&psd=adminisp failed for 220.184.231.73, reason: 
+"httpd_file: Can't access /home/ec2-user/.tsung/log/20211127-0136/boaform/admin/formLogin: File not found"
+[27/Nov/2021:01:38:02 -0000], Server: tsung_controller, Protocol: HTTP, Transport: TCP, URI: /boaform/admin/formLogin?username=adminisp&psd=adminisp, Host: 172.31.57.22:8091, Peer: 220.184.231.73:50974, Reason: [{statuscode,404},{description,"Object Not Found"}]

@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
+  POSTS_X_PAGE = 5
 
   # GET /posts or /posts.json
   def index
-    ids = current_user.friends.pluck(:id) << current_user.id
-    @posts = Post.where(user_id: ids)
+    ids = current_user&.friends&.pluck(:id) << current_user.id
+    @page = params.fetch(:page, 0).to_i
+    @posts = Post.where(user_id: ids).order(created_at: :desc).offset(@page * POSTS_X_PAGE).limit(POSTS_X_PAGE)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -23,7 +25,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post.user_id = current_user&.id
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }

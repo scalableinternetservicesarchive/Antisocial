@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a2de910f-f354-4e1a-b174-babefe5754ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/request_mean.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListPosts/HorizontalScaling4xt3Medium/plots_test/request_mean.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_2xx.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/http_5xx.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/request_mean.png" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_logs/testing/app_v2_ListUsers/HorizontalScaling4xt3Medium/plots_test/request_mean.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_tests/ListPosts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_tests/ListPosts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_tests/ListUsers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_tests/ListUsers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsung_tests/tsung_posts_final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tsung_tests/tsung_posts_final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/profiles_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/profiles_controller_test.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +51,7 @@
   <component name="RunManager" selected="Rails.Development: nogram">
     <configuration default="true" type="RackRunConfigurationType" factoryName="Rack">
       <RACK_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RACK_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RACK_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RACK_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RACK_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RACK_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -83,7 +74,7 @@
       <module name="nogram" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -108,7 +99,7 @@
       <module name="nogram" />
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
@@ -132,7 +123,7 @@
     <configuration default="true" type="RailsRunConfigurationType" factoryName="Rails">
       <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
